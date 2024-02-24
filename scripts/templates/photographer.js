@@ -13,7 +13,7 @@ function photographerTemplate(data) {
         listeItem.appendChild(article);
 
         const link = document.createElement('a');
-        link.setAttribute('href', `./photographer.html?api=${id}`);
+        link.setAttribute('href', `./photographer.html?id=${id}`);
         link.setAttribute('target', `_self`);
 
         const img = document.createElement( 'img' );
