@@ -18,6 +18,8 @@ async function init() {
 
     // Récupère les medias du photographe et son identité
     const [mediasFiltered, photographer] = await getMediasAndPhotographeById(+id);
+
+    console.log(mediasFiltered)
 }
 
 init();
