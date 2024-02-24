@@ -1,4 +1,4 @@
-# Projet Fisheye
+# [Projet Fisheye](https://karlito14.github.io/projet6Fisheye/)
 
 ## Projet numéro 6 de la formation Openclassrooms Développeur d'Application JavaScript / React
 
@@ -35,10 +35,11 @@ FishEye est un site web qui permet aux photographes indépendants de présenter 
 - Les médias peuvent être triés par popularité ou par titre ou par date
 - Lorsque l'utilisateur clique sur un média, celui-ci doit s’ouvrir dans une lightbox. Il est possible de faire défiler les médias avec la souris et le clavier
 - Afficher un bouton pour contacter le photographe
+
 * Le formulaire de contact est une modale qui s'affiche par-dessus
-le reste
+  le reste
 * Il comprend des champs pour les noms, l'adresse électronique et
-le message
+  le message
 
 ### Instructions
 

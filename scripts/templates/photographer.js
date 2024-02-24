@@ -37,6 +37,7 @@ function photographerTemplate(data) {
 
         const elPrice = document.createElement('span');
         elPrice.setAttribute('class', 'article-price');
+        elPrice.setAttribute('aria-label', 'prix à la journée du photographe');
         elPrice.textContent = `${price}€/jour`;
 
         article.appendChild(link);
