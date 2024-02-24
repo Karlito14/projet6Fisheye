@@ -19,13 +19,15 @@ function photographerTemplate(data) {
         const img = document.createElement( 'img' );
         img.setAttribute('class', 'article-img');
         img.setAttribute("src", picture);
-        img.setAttribute('alt', `photo de ${name}`);
+        img.setAttribute('alt', "");
 
-        link.appendChild(img)
+        link.appendChild(img);
 
         const h2 = document.createElement( 'h2' );
         h2.setAttribute('class', 'article-title');
         h2.textContent = name;
+
+        link.appendChild(h2);
 
         const adress = document.createElement('adress');
         adress.setAttribute('class', 'article-adress');
@@ -37,16 +39,16 @@ function photographerTemplate(data) {
 
         const elPrice = document.createElement('span');
         elPrice.setAttribute('class', 'article-price');
-        elPrice.setAttribute('aria-label', 'prix à la journée du photographe');
+        elPrice.setAttribute('aria-label', 'prix journalier du photographe');
         elPrice.textContent = `${price}€/jour`;
 
         article.appendChild(link);
-        article.appendChild(h2);
         article.appendChild(adress);
         article.appendChild(citation);
         article.appendChild(elPrice);
 
         return (listeItem);
     }
-    return { name, picture, getUserCardDOM }
+
+    return { name, picture,city, country, tagline, price, id, getUserCardDOM };
 }

@@ -8,12 +8,12 @@ async function getPhotographers() {
 }
 
 function displayData(photographers) {
-    const photographersSection = document.querySelector(".list-photographers");
+    const photographersListSection = document.querySelector(".list-photographers");
 
     photographers.forEach((photographer) => {
         const photographerModel = photographerTemplate(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
+        photographersListSection.appendChild(userCardDOM);
     });
 }
 
