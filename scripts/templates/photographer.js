@@ -1,17 +1,27 @@
 function photographerTemplate(data) {
-    const { name, portrait, city, country, tagline, price } = data;
+    const { name, portrait, city, country, tagline, price, id } = data;
     console.log(data)
 
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
+        const listeItem = document.createElement('li');
+
         const article = document.createElement( 'article' );
         article.setAttribute('class', 'article');
+
+        listeItem.appendChild(article);
+
+        const link = document.createElement('a');
+        link.setAttribute('href', `./photographer.html?api=${id}`);
+        link.setAttribute('target', `_self`);
 
         const img = document.createElement( 'img' );
         img.setAttribute('class', 'article-img');
         img.setAttribute("src", picture);
         img.setAttribute('alt', `photo de ${name}`);
+
+        link.appendChild(img)
 
         const h2 = document.createElement( 'h2' );
         h2.setAttribute('class', 'article-title');
@@ -29,13 +39,13 @@ function photographerTemplate(data) {
         elPrice.setAttribute('class', 'article-price');
         elPrice.textContent = `${price}€/jour`;
 
-        article.appendChild(img);
+        article.appendChild(link);
         article.appendChild(h2);
         article.appendChild(adress);
         article.appendChild(citation);
         article.appendChild(elPrice);
 
-        return (article);
+        return (listeItem);
     }
     return { name, picture, getUserCardDOM }
 }

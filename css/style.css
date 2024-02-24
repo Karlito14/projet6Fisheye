@@ -25,12 +25,16 @@ h1 {
     margin-right: 100px;
 }
 
+ul {
+    list-style-type: none;
+}
+
 .logo {
     height: 50px;
     margin-left: 100px;
 }
 
-.photographer_section {
+.list-photographers {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
@@ -56,6 +60,12 @@ h1 {
     height: 200px;
     width: 200px;
     border-radius: 50%;
+    transition: all 0.4s;
+}
+
+.article-img:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #000;
 }
 
 .article-adress{
