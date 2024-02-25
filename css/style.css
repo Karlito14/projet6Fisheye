@@ -9,7 +9,15 @@ body {
     margin: 0;
 }
 
+ul {
+    list-style-type: none;
+}
 
+a{
+    text-decoration:none;
+}
+
+/*********************** Header ***********************/
 header {
     display: flex;
     flex-direction: row;
@@ -23,19 +31,12 @@ header {
     margin-right: 100px;
 }
 
-ul {
-    list-style-type: none;
-}
-
-a{
-    text-decoration:none;
-}
-
 .logo {
     height: 50px;
     margin-left: 100px;
 }
 
+/******************** Section photographes ********************/
 .list-photographers {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

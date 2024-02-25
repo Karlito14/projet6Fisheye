@@ -52,26 +52,29 @@ function photographerTemplate(data) {
 
     function getUserCardPhotographer() {
         const divInfo = document.createElement('div');
-        divInfo.setAttribute('class', 'div-card');
+        divInfo.setAttribute('class', 'div-info');
     
         const title = document.createElement('h1');
-        title.setAttribute('class', 'div-card-title');
+        title.setAttribute('class', 'div-info-title');
         title.textContent = name;
 
         const adress = document.createElement('adress');
-        adress.setAttribute('class', 'div-card-adress');
+        adress.setAttribute('class', 'div-info-adress');
         adress.textContent = `${city}, ${country}`;
 
         const citation = document.createElement('q');
-        citation.setAttribute('class', 'div-card-citation');
+        citation.setAttribute('class', 'div-info-citation');
         citation.textContent = tagline;
 
         divInfo.appendChild(title);
         divInfo.appendChild(adress);
         divInfo.appendChild(citation);
 
+        const divImg = document.createElement('div');
+        divImg.setAttribute('class', 'div-img');
+
         const img = document.createElement( 'img' );
-        img.setAttribute('class', 'div-card-img');
+        img.setAttribute('class', 'div-img-image');
         img.setAttribute("src", picture);
         img.setAttribute('alt', `${name}`);
 

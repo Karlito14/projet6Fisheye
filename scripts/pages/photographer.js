@@ -22,6 +22,16 @@ function displayPhotographer(photographer) {
     photographerHeader.append(image)
 }
 
+function displayMedias(medias) {
+    const elMediasList = document.querySelector('.medias-list');
+
+    medias.forEach(media => {
+        const mediaModel = mediasTemplate(media);
+        const mediaCard = mediaModel.getMediaCard();
+        elMediasList.appendChild(mediaCard);
+    });
+}
+
 async function init() {
     // Récupère le ID du photographe dans l'URL
     const params = new URL(document.location).searchParams;
@@ -31,6 +41,7 @@ async function init() {
     const [mediasFiltered, photographer] = await getMediasAndPhotographeById(+id);
 
     displayPhotographer(photographer);
+    displayMedias(mediasFiltered);
 }
 
 init();

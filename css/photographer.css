@@ -9,7 +9,15 @@ body {
     margin: 0;
 }
 
+ul {
+    list-style-type: none;
+}
 
+a{
+    text-decoration:none;
+}
+
+/************************* Header *************************/
 header {
     display: flex;
     flex-direction: row;
@@ -23,10 +31,7 @@ header {
     margin-left: 100px;
 }
 
-#contact_modal {
-    display: none;
-}
-
+/************************* Main *************************/
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -34,34 +39,42 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 50px;
 }
 
-.div-card {
+.div-info {
     display: flex;
     flex-direction: column;
     font-weight: 400;
-    width: 350px;
+    width: 30%;
 }
 
-.div-card-title {
+.div-contact_button {
+    width: 30%;
+}
+
+.div-info-title {
     font-size: 4em;
     color: #D3573C;
 }
 
-.div-card-adress {
+.div-info-adress {
     font-size: 1.5em;
     color: #901C1C;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.div-card-citation {
+.div-info-citation {
     quotes: none;
     font-size: 1.125em;
 }
 
-.div-card-img {
+.div-img {
+    width: 30%;
+}
+
+.div-img-image {
     height: 200px;
     width: 200px;
     object-fit: cover;
@@ -85,11 +98,91 @@ header {
 .contact_button:hover, .contact_button:focus{
     background-color: #DB8876;
     color: #000;
+    outline: none;
 }
 
+/************************* Oeuvres *************************/
+.div-select {
+    margin: 20px 100px;
+}
 
+.label-select {
+    font-weight: 700;
+    font-size: 1.125em;
+    margin-right: 15px;
+}
+
+.select-options {
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px 40px 10px 15px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.125em;
+    appearance: none;
+    transition: all 0.4s;
+    background: url('../assets/icons/Vector.svg'), #901C1C;
+    background-repeat: no-repeat;
+    background-position: right 10px bottom 50%;
+}
+
+.select-options:hover, .select-options:focus {
+    background-color: #DB8876;
+    color: #000;
+    outline: none;
+}
+
+.medias-section {
+    margin: 20px 100px;
+}
+
+.medias-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.article-media{
+    width: 350px;
+    position: relative;
+}
+
+.image-media {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.article-media::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(196, 196, 196, 0.2);
+    height: 300px;
+    width: 100%;
+    top: 0;
+    border-radius: 5px;
+}
+
+.div-info-media {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5em;
+    color: #901C1C;
+
+}
+
+.fa-heart {
+    margin-left: 10px;
+}
 
 /************************* Modal *************************/
+#contact_modal {
+    display: none;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
