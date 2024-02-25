@@ -45,10 +45,6 @@ header {
     margin-bottom: 70px;
 }
 
-.list-photographers a:focus {
-    box-shadow: 0 0 15px #000;
-}
-
 .article {
     justify-self: center;
     display: flex;
@@ -64,6 +60,7 @@ header {
 
 .article a:hover{
     box-shadow: 0 0 15px #000;
+    border-radius: 5px;
 }
 
 .article-title {
