@@ -11,6 +11,17 @@ async function getMediasAndPhotographeById(id) {
     return [mediasFiltered, ...photographer];
 }
 
+function displayPhotographer(photographer) {
+    const photographerHeader = document.querySelector('.photograph-header');
+
+    const photographerModel = photographerTemplate(photographer);
+
+    const [divInfo, image] = photographerModel.getUserCardPhotographer();
+
+    photographerHeader.prepend(divInfo);
+    photographerHeader.append(image)
+}
+
 async function init() {
     // Récupère le ID du photographe dans l'URL
     const params = new URL(document.location).searchParams;
@@ -19,7 +30,7 @@ async function init() {
     // Récupère les medias du photographe et son identité
     const [mediasFiltered, photographer] = await getMediasAndPhotographeById(+id);
 
-    console.log(mediasFiltered)
+    displayPhotographer(photographer);
 }
 
 init();

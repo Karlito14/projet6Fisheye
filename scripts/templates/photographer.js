@@ -50,5 +50,34 @@ function photographerTemplate(data) {
         return (listeItem);
     }
 
-    return { name, picture,city, country, tagline, price, id, getUserCardDOM };
+    function getUserCardPhotographer() {
+        const divInfo = document.createElement('div');
+        divInfo.setAttribute('class', 'div-card');
+    
+        const title = document.createElement('h1');
+        title.setAttribute('class', 'div-card-title');
+        title.textContent = name;
+
+        const adress = document.createElement('adress');
+        adress.setAttribute('class', 'div-card-adress');
+        adress.textContent = `${city}, ${country}`;
+
+        const citation = document.createElement('q');
+        citation.setAttribute('class', 'div-card-citation');
+        citation.textContent = tagline;
+
+        divInfo.appendChild(title);
+        divInfo.appendChild(adress);
+        divInfo.appendChild(citation);
+
+        const img = document.createElement( 'img' );
+        img.setAttribute('class', 'div-card-img');
+        img.setAttribute("src", picture);
+        img.setAttribute('alt', `${name}`);
+
+        return [divInfo, img];
+    }
+
+    return { name, picture,city, country, tagline, price, id, getUserCardDOM, getUserCardPhotographer};
 }
+
