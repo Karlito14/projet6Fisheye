@@ -31,6 +31,26 @@ function displayMedias(medias) {
         const mediaCard = mediaModel.getMediaCard();
         elMediasList.appendChild(mediaCard);
     });
+
+    const iconsHeart = document.querySelectorAll('.icon-media');
+    
+    for(let icon of iconsHeart) {
+        icon.addEventListener('click', (event) => {
+            console.log(icon)
+            const span = icon.closest('span');
+            const value = span.textContent;
+            const newValue = +value + 1;
+
+            const totalLikes = document.querySelector('.total-likes');
+
+            const valueTotalLikes = totalLikes.textContent;
+
+            totalLikes.textContent = +valueTotalLikes + 1;
+
+            span.textContent = newValue;
+            span.appendChild(icon);
+        })
+    }
 }
 
 function displayTotalLikesAndPrice(medias, price) {
@@ -57,7 +77,6 @@ async function init() {
     medias = sortByValue(mediasFiltered, select.value);
 
     select.addEventListener('input', (event) => {
-        console.log(event)
         medias = sortByValue(mediasFiltered, event.target.value);
         displayMedias(medias);
     })

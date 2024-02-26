@@ -56,10 +56,10 @@ function mediasTemplate(media) {
 }
 
 function getTotalLikesAndPrice(totalLikes, price) {
-    const likesAndPrice = document.createElement('span');
+    const likesAndPrice = document.createElement('p');
     likesAndPrice.setAttribute('aria-label', 'likes total and price');
     likesAndPrice.setAttribute('class', 'likes-price');
-    likesAndPrice.innerHTML = `${totalLikes}<i class="fa-solid fa-heart icon-likes"></i> ${price}€ / jour`;
+    likesAndPrice.innerHTML = `<span aria-label='nombre de likes' class='total-likes'>${totalLikes}</span><i class="fa-solid fa-heart icon-likes"></i><span aria-label='montant journalier'>${price}€ / jour</span>`;
 
     return likesAndPrice;
 }
