@@ -32,6 +32,17 @@ function displayMedias(medias) {
     });
 }
 
+function displayTotalLikesAndPrice(medias, price) {
+    const sectionMedias = document.querySelector('.list-medias');
+    const totalLikes = medias.reduce((acc, curr) => {
+        return acc + curr.likes;
+    }, 0);
+
+    const likesAndPrice = getTotalLikesAndPrice(totalLikes, price);
+
+    sectionMedias.appendChild(likesAndPrice)
+}
+
 async function init() {
     // Récupère le ID du photographe dans l'URL
     const params = new URL(document.location).searchParams;
@@ -42,6 +53,7 @@ async function init() {
 
     displayPhotographer(photographer);
     displayMedias(mediasFiltered);
+    displayTotalLikesAndPrice(mediasFiltered, photographer.price);
 }
 
 init();

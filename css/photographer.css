@@ -154,6 +154,7 @@ header {
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .article-media::before {
@@ -178,11 +179,33 @@ header {
 .text-media {
     font-weight: 400;
     font-size: 1.1em;
+    margin-right: 10px;
 }
 
-.fa-heart {
+.number-likes {
+    display: flex;
+    align-items: center;
+}
+
+.icon-media {
     margin-left: 10px;
     cursor: pointer;
+}
+
+.likes-price {
+    background-color: #DB8876;
+    position: fixed;
+    bottom: 0;
+    right: 80px;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 1.5em;
+    border-radius: 5px 5px 0 0;
+}
+
+.icon-likes {
+    margin-right: 40px;
+    margin-left: 5px;
 }
 
 /************************* Modal *************************/
