@@ -22,6 +22,7 @@
     />
 
     <!-- - - - - - - - -    Style   - - - - - - - - -->
+    <link rel="stylesheet" href="./css/modal-form.css" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
@@ -38,44 +39,95 @@
 
     <!-- - - - - - - - -    Main   - - - - - - - - -->
     <main id="main">
-      <div class="photograph-header">
+      <section class="photograph-header">
         <div class="div-contact_button">
-          <button class="contact_button" onclick="displayModal()">
+          <button
+            class="contact_button"
+            aria-haspopup="dialog"
+            aria-controls="dialog"
+          >
             Contactez-moi
           </button>
         </div>
-      </div>
+      </section>
+      <section class="list-medias">
+        <div class="div-select">
+          <label class="label-select" for="select">Trier par</label>
+          <select class="select-options" name="select" id="select">
+            <option selected value="popularity">Popularité</option>
+            <option value="date">Date</option>
+            <option value="title">Titre</option>
+          </select>
+        </div>
+
+        <div class="medias-section">
+          <ul class="medias-list"></ul>
+        </div>
+      </section>
     </main>
 
-    <section class="list-medias">
-      <div class="div-select">
-        <label class="label-select" for="select">Trier par</label>
-        <select class="select-options" name="select" id="select">
-          <option selected value="popularity">Popularité</option>
-          <option value="date">Date</option>
-          <option value="title">Titre</option>
-        </select>
-      </div>
-
-      <div class="medias-section">
-        <ul class="medias-list"></ul>
-      </div>
-    </section>
-
     <!-- - - - - - - - -    Modal   - - - - - - - - -->
-    <div id="contact_modal">
-      <div class="modal">
+    <div
+      role="dialog"
+      id="contact_modal"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="dialog-title"
+      tabindex="-1"
+    >
+      <div role="document" class="modal">
         <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 id="dialog-title">Contactez-moi</h2>
+          <img
+            tabindex="0"
+            src="assets/icons/close.svg"
+            aria-label="close contact form"
+            data-dismiss="dialog"
+          />
         </header>
         <!-- - - - - - - - -    Form   - - - - - - - - -->
-        <form>
+        <form action="" method="post" class="form-modal">
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="first">Prénom</label>
+            <input
+              type="text"
+              id="firt"
+              name="first"
+              autocomplete="off"
+              required
+            />
           </div>
-          <button class="contact_button">Envoyer</button>
+          <div>
+            <label for="last">Nom</label>
+            <input
+              type="text"
+              id="last"
+              name="last"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <div>
+            <label for="message">Votre message</label>
+            <textarea
+              name="message"
+              id="message"
+              rows="10"
+              autocomplete="off"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="send_form">Envoyer</button>
         </form>
       </div>
     </div>
@@ -87,6 +139,6 @@
     <script src="scripts/templates/photographer.js"></script>
     <script src="scripts/templates/medias.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script type="module" src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

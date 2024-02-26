@@ -36,7 +36,6 @@ function displayMedias(medias) {
     
     for(let icon of iconsHeart) {
         icon.addEventListener('click', (event) => {
-            console.log(icon)
             const span = icon.closest('span');
             const value = span.textContent;
             const newValue = +value + 1;
