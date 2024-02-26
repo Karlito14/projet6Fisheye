@@ -1,24 +1,28 @@
-import { Modal } from "../templates/form.js";
+import { Modal } from "../templates/modal.js";
 const buttonContact = document.querySelector('.contact_button');
-const dialog = document.querySelector('#contact_modal');
+const modal = document.querySelector('#contact_modal');
 const main = document.querySelector('#main');
 const closeDialog = document.querySelector('[data-dismiss]');
 const modalDocument = document.querySelector('.modal');
+const form = document.querySelector('.form-modal');
+
+const modalForm = new Modal(modal, main);
 
 buttonContact.addEventListener('click', displayModal);
 closeDialog.addEventListener('click', closeModal);
-dialog.addEventListener('click', closeModal);
+modal.addEventListener('click', closeModal);
 modalDocument.addEventListener('click', (event) => {
     event.stopPropagation();
-})
+});
 
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+});
 
-const modalForm = new Modal(dialog);
 
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
-    dialog.setAttribute('aria-hidden', false);
+    modal.setAttribute('aria-hidden', false);
     main.setAttribute('aria-hidden', true);
     modalForm.focusInFirstInputFocusable();
 
@@ -36,8 +40,8 @@ function displayModal() {
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
-    dialog.setAttribute('aria-hidden', true);
+    modal.setAttribute('aria-hidden', true);
     main.setAttribute('aria-hidden', false);
 }
+

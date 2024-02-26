@@ -9,13 +9,14 @@ const focusableElementsArray = [
 
 export class Modal {
 
-    constructor(modal) {
+    constructor(modal, main) {
+        this.main = main;
         this.modal = modal;
         this.firstElementFocusable = this.findFirstElementFocusable(this.modal, focusableElementsArray);
         this.firstInputFocusable = this.findFirstInputFocusable(this.modal, focusableElementsArray);
-        this.lastElementFocusable = this.findLastFirstElementFocusable(this.modal, focusableElementsArray)
+        this.lastElementFocusable = this.findLastFirstElementFocusable(this.modal, focusableElementsArray);
     }
-
+    
     focusInFirstInputFocusable() {
         this.firstInputFocusable.focus();
     }
@@ -51,4 +52,29 @@ export class Modal {
             this.lastElementFocusable.focus();
         }
     }
+
+    /* displayModal() {
+        this.modal.style.display = "block";
+        this.modal.removeAttribute('aria-hidden');
+        this.main.setAttribute('aria-hidden', true);
+        this.focusInFirstInputFocusable();
+
+        window.addEventListener('keydown', (event) => {
+            if(event.code === 'Tab') {
+                this.closeFocusInTheModal(event);
+            }
+        })
+    
+        window.addEventListener('keydown', (event) => {
+            if(event.code === 'Escape') {
+                this.closeModal();
+            }
+        })
+    }
+
+    closeModal() {
+        this.modal.style.display = "none";
+        this.modal.setAttribute('aria-hidden', true);
+        this.main.removeAttribute('aria-hidden');
+    }*/
 }

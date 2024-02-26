@@ -1,3 +1,8 @@
+:root {
+    --color-primary: #901C1C;
+    --colors-secondary: #DB8876;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -59,7 +64,7 @@ header {
 
 .div-info-adress {
     font-size: 1.5em;
-    color: #901C1C;
+    color: var(--color-primary);
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -88,14 +93,14 @@ header {
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: var(--color-primary);
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.4s;
 }
 
 .contact_button:hover, .contact_button:focus{
-    background-color: #DB8876;
+    background-color: var(--colors-secondary);
     color: #000;
     outline: none;
 }
@@ -121,11 +126,11 @@ header {
     font-size: 1.125em;
     appearance: none;
     transition: all 0.4s;
-    background: #901C1C;
+    background: var(--color-primary);
 }
 
 .select-options:hover, .select-options:focus {
-    background-color: #DB8876;
+    background-color: var(--colors-secondary);
     color: #000;
     outline: none;
 }
@@ -172,7 +177,7 @@ header {
     justify-content: space-between;
     align-items: center;
     font-size: 1.5em;
-    color: #901C1C;
+    color: var(--color-primary);
 }
 
 .text-media {
@@ -192,7 +197,7 @@ header {
 }
 
 .likes-price {
-    background-color: #DB8876;
+    background-color: var(--colors-secondary);
     position: fixed;
     bottom: 0;
     right: 80px;

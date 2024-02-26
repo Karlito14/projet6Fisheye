@@ -67,6 +67,7 @@ async function init() {
     // Récupère le ID du photographe dans l'URL
     const params = new URL(document.location).searchParams;
     let id = params.get("id");
+    console.log(id)
 
     // Récupère les medias du photographe et son identité
     const [mediasFiltered, photographer] = await getMediasAndPhotographeById(+id);
