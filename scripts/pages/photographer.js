@@ -24,6 +24,7 @@ function displayPhotographer(photographer) {
 
 function displayMedias(medias) {
     const elMediasList = document.querySelector('.medias-list');
+    elMediasList.innerHTML = '';
 
     medias.forEach(media => {
         const mediaModel = mediasTemplate(media);
@@ -40,7 +41,7 @@ function displayTotalLikesAndPrice(medias, price) {
 
     const likesAndPrice = getTotalLikesAndPrice(totalLikes, price);
 
-    sectionMedias.appendChild(likesAndPrice)
+    sectionMedias.appendChild(likesAndPrice);
 }
 
 async function init() {
@@ -51,9 +52,19 @@ async function init() {
     // Récupère les medias du photographe et son identité
     const [mediasFiltered, photographer] = await getMediasAndPhotographeById(+id);
 
+    // Trier les oeuvres selon l'option selected
+    const select = document.querySelector('.select-options');
+    medias = sortByValue(mediasFiltered, select.value);
+
+    select.addEventListener('input', (event) => {
+        console.log(event)
+        medias = sortByValue(mediasFiltered, event.target.value);
+        displayMedias(medias);
+    })
+
     displayPhotographer(photographer);
-    displayMedias(mediasFiltered);
-    displayTotalLikesAndPrice(mediasFiltered, photographer.price);
+    displayMedias(medias);
+    displayTotalLikesAndPrice(medias, photographer.price);
 }
 
 init();

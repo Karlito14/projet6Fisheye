@@ -52,7 +52,7 @@ function mediasTemplate(media) {
         return elementLi;
     }
 
-    return {title, likes, picture, date, videoMedia, getMediaCard, getTotalLikesAndPrice};
+    return {title, likes, picture, date, videoMedia, getMediaCard};
 }
 
 function getTotalLikesAndPrice(totalLikes, price) {
@@ -62,4 +62,35 @@ function getTotalLikesAndPrice(totalLikes, price) {
     likesAndPrice.innerHTML = `${totalLikes}<i class="fa-solid fa-heart icon-likes"></i> ${price}€ / jour`;
 
     return likesAndPrice;
+}
+
+function sortByValue(medias, value) {
+    if(value === 'popularity') {
+        medias.sort((a, b) => {
+            return b.likes - a.likes;
+        })
+    } else if(value === 'title') {
+        medias.sort((a, b) => {
+            return a.title.localeCompare(b.title);
+        })
+    } else if(value === 'date') {
+        medias.sort((a, b) => {
+            let valueA = +a.date.split('-')[0];
+            let valueB = +b.date.split('-')[0];
+
+            if(valueA === valueB) {
+                valueA = +a.date.split('-')[1];
+                valueB = +b.date.split('-')[1];
+
+                if(valueA === valueB) {
+                    valueA = +a.date.split('-')[2];
+                    valueB = +b.date.split('-')[2];
+                }
+            }
+
+            return valueB - valueA;
+        })
+    }
+
+    return medias;
 }

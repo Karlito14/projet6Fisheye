@@ -2,18 +2,24 @@
 <html lang="fr">
   <head>
     <!-- - - - - - - - -    Balises Meta  - - - - - - - - -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1" >
-    <meta name="description" content="FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux"
+    />
 
     <!-- - - - - - - - -    Title   - - - - - - - - -->
-    <title>Fisheye - photographe </title>
+    <title>Fisheye - photographe</title>
 
     <!-- - - - - - - - -    favicon   - - - - - - - - -->
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
 
     <!-- - - - - - - - -    Google font   - - - - - - - - -->
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- - - - - - - - -    Style   - - - - - - - - -->
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
@@ -22,7 +28,11 @@
     <!-- - - - - - - - -    Header   - - - - - - - - -->
     <header>
       <a href="./index.html" target="_self">
-        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
       </a>
     </header>
 
@@ -30,7 +40,9 @@
     <main id="main">
       <div class="photograph-header">
         <div class="div-contact_button">
-          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+          <button class="contact_button" onclick="displayModal()">
+            Contactez-moi
+          </button>
         </div>
       </div>
     </main>
@@ -46,31 +58,32 @@
       </div>
 
       <div class="medias-section">
-        <ul class="medias-list">
-
-        </ul>
+        <ul class="medias-list"></ul>
       </div>
     </section>
 
     <!-- - - - - - - - -    Modal   - - - - - - - - -->
     <div id="contact_modal">
-			<div class="modal">
-				<header>
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
         <!-- - - - - - - - -    Form   - - - - - - - - -->
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
+        <form>
+          <div>
+            <label>Prénom</label>
+            <input />
+          </div>
           <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        </form>
+      </div>
+    </div>
     <!-- - - - - - - - -    Scripts   - - - - - - - - -->
-    <script src="https://kit.fontawesome.com/a8c57682fc.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/a8c57682fc.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="scripts/templates/photographer.js"></script>
     <script src="scripts/templates/medias.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
