@@ -1,4 +1,3 @@
-import { Modal } from "../templates/modal.js";
 const buttonContact = document.querySelector('.contact_button');
 const modal = document.querySelector('#contact_modal');
 const main = document.querySelector('#main');

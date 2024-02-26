@@ -7,7 +7,7 @@ const focusableElementsArray = [
     '[tabindex]:not([tabindex="-1"])',
 ];
 
-export class Modal {
+class Modal {
 
     constructor(modal, main) {
         this.main = main;
