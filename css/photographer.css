@@ -145,10 +145,6 @@ header {
     gap: 30px;
 }
 
-.li-media-item{
-    width: 27%;
-}
-
 .article-media{
     position: relative;
 }
@@ -159,17 +155,7 @@ header {
     object-fit: cover;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.article-media::before {
-    content: '';
-    position: absolute;
-    background-color: rgba(196, 196, 196, 0.2);
-    height: 300px;
-    width: 100%;
-    top: 0;
-    border-radius: 5px;
-    cursor: pointer;
+    filter: grayscale(30%);
 }
 
 .div-info-media {

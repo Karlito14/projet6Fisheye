@@ -1,17 +1,18 @@
-import { CheckForm } from "./check-form.js";
 const buttonContact = document.querySelector('.contact_button');
-const buttonSubmit = document.querySelector('button[type=submit]');
 const modal = document.querySelector('#contact_modal');
 const main = document.querySelector('#main');
-const closeDialog = document.querySelector('[data-dismiss]');
-const modalDocument = document.querySelector('.modal');
-const form = document.querySelector('.form-modal');
-const inputFirst = document.querySelector('#first');
-const inputLast = document.querySelector('#last');
-const inputEmail = document.querySelector('#email');
-const textArea = document.querySelector('#message');
+const closeDialog = modal.querySelector('[data-dismiss]');
+const modalDocument = modal.querySelector('.modal');
+const form = modalDocument.querySelector('.form-modal');
+const inputFirst = form.querySelector('#first');
+const inputLast = form.querySelector('#last');
+const inputEmail = form.querySelector('#email');
+const textArea = form.querySelector('#message');
+const contactTitle = modal.querySelector('#dialog-title');
+const namePhotographer = document.querySelector('.div-info-title');
+const body = document.querySelector('body');
 
-const inputs = [inputFirst, inputLast, inputEmail, textArea]
+const inputs = [inputFirst, inputLast, inputEmail, textArea];
 
 const modalForm = new Modal(modal, main);
 
@@ -23,10 +24,10 @@ modalDocument.addEventListener('click', (event) => {
 });
 
 form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
     let formOk = true;
 
-    event.preventDefault();
     try {
         CheckForm.checkInputTextValidity(inputFirst);
         CheckForm.displayError(inputFirst, '');
@@ -74,9 +75,14 @@ form.addEventListener('submit', (event) => {
 
 
 function displayModal() {
+    if(!contactTitle.textContent.includes(namePhotographer.textContent)) {
+        contactTitle.textContent += ` ${namePhotographer.textContent}`;
+    }
+
 	modal.style.display = "block";
     modal.setAttribute('aria-hidden', false);
     main.setAttribute('aria-hidden', true);
+    body.style.overflow = 'hidden';
     modalForm.focusInFirstInputFocusable();
 
     window.addEventListener('keydown', (event) => {
@@ -96,5 +102,7 @@ function closeModal() {
     modal.style.display = "none";
     modal.setAttribute('aria-hidden', true);
     main.setAttribute('aria-hidden', false);
+    body.removeAttribute('style');
+    buttonContact.focus();
 }
 

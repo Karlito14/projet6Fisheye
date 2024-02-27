@@ -1,0 +1,46 @@
+:root {
+    --color-primary: #901C1C;
+    --colors-secondary: #DB8876;
+}
+
+.modal-carousel{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.close-carousel {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    color: var(--color-primary);
+    font-size: 2em;
+}
+
+.list-carousel {
+    width: 90%;
+    padding: 0 10px;
+    margin: 10px auto;
+}
+
+.btn-carousel{
+    color: var(--color-primary);
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.image-carousel {
+    height: 900px;
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.title-img-carousel {
+    font-weight: 400;
+    color: var(--color-primary);
+    font-size: 1.5em;
+}

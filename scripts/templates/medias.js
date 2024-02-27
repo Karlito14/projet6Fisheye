@@ -1,8 +1,8 @@
 function mediasTemplate(media) {
     const {title, likes, image, date, video} = media;
 
-    const picture = `assets/medias/min_${image}`;
-    const videoMedia = `assets/medias/min_${video}`;
+    const picture = `assets/medias/${image}`;
+    const videoMedia = `assets/medias/${video}`;
 
     function getMediaCard() {
         const elementLi = document.createElement('li');
@@ -19,11 +19,10 @@ function mediasTemplate(media) {
             elMedia.setAttribute('alt', "");
         } else {
             elMedia = document.createElement('video');
-            elMedia.setAttribute('controls', 'controls');
 
             const source = document.createElement('source');
             source.setAttribute('src', videoMedia);
-            source.setAttribute('type', 'video/webm');
+            source.setAttribute('type', 'video/mp4');
 
             const erreur = document.createElement('span');
             erreur.textContent = 'Votre navigateur ne prend pas en charge les vidéos HTML5'
@@ -33,6 +32,10 @@ function mediasTemplate(media) {
         }
 
         elMedia.setAttribute('class', 'image-media');
+        elMedia.setAttribute('tabindex', '0');
+        elMedia.setAttribute('aria-haspopup', 'dialog');
+        elMedia.setAttribute('aria-controls', 'carousel_modal');
+        elMedia.setAttribute('data-name', `${title}`);
 
         const divInfo = document.createElement('div');
         divInfo.setAttribute('class', 'div-info-media');
@@ -55,8 +58,13 @@ function mediasTemplate(media) {
     return {title, likes, picture, date, videoMedia, getMediaCard};
 }
 
-function getTotalLikesAndPrice(totalLikes, price) {
+function getTotalLikesAndPrice(medias, price) {
     const likesAndPrice = document.createElement('p');
+
+    const totalLikes = medias.reduce((acc, curr) => {
+        return acc + curr.likes;
+    }, 0);
+
     likesAndPrice.setAttribute('aria-label', 'likes total and price');
     likesAndPrice.setAttribute('class', 'likes-price');
     likesAndPrice.innerHTML = `<span aria-label='nombre de likes' class='total-likes'>${totalLikes}</span><i class="fa-solid fa-heart icon-likes"></i><span aria-label='montant journalier'>${price}€ / jour</span>`;

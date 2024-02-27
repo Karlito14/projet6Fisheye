@@ -24,6 +24,7 @@
     <!-- - - - - - - - -    Style   - - - - - - - - -->
     <link rel="stylesheet" href="./css/modal-form.css" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/carousel.css" type="text/css">
   </head>
   <body>
     <!-- - - - - - - - -    Header   - - - - - - - - -->
@@ -66,7 +67,7 @@
       </section>
     </main>
 
-    <!-- - - - - - - - -    Modal   - - - - - - - - -->
+    <!-- - - - - - - - -    Modal Form   - - - - - - - - -->
     <div
       role="dialog"
       id="contact_modal"
@@ -139,6 +140,35 @@
         </form>
       </div>
     </div>
+
+    <!-- - - - - - - - -    Modal Carousel   - - - - - - - - -->
+    <div
+      role="dialog"
+      id="carousel_modal"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="carrousel-title"
+      tabindex="-1"
+    >
+      <div role="document" class="modal-carousel">
+        <i 
+          role="button"
+          class="fa-solid fa-xmark close-carousel"
+          tabindex="0"
+          aria-label="close dialog"
+          data-dismiss="dialog"
+        ></i>
+        <i class="fa-solid fa-angle-left btn-carousel" aria-label="previous image" id="prev" role="button" tabindex="0"></i>
+        <ul class="list-carousel">
+          <li>
+            <img class="image-carousel" src="assets/medias/Animals_Majesty.jpg" alt="">
+            <h2 id="carrousel-title" class="title-img-carousel">Titre</h2>
+          </li>
+        </ul>
+        <i class="fa-solid fa-angle-right btn-carousel" aria-label="next image" id="next" role="button" tabindex="0"></i>
+      </div>
+    </div>
+
     <!-- - - - - - - - -    Scripts   - - - - - - - - -->
     <script
       src="https://kit.fontawesome.com/a8c57682fc.js"
@@ -147,6 +177,7 @@
     <script src="scripts/templates/photographer.js"></script>
     <script src="scripts/templates/medias.js"></script>
     <script src="scripts/templates/modal.js"></script>
+    <script src="scripts/utils/carousel.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script type="module" src="scripts/utils/check-form.js"></script>
     <script type="module" src="scripts/utils/contactForm.js"></script>

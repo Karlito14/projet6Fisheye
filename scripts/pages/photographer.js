@@ -35,16 +35,24 @@ function displayMedias(medias) {
     const iconsHeart = document.querySelectorAll('.icon-media');
     
     for(let icon of iconsHeart) {
+        let clicked = false;
         icon.addEventListener('click', (event) => {
             const span = icon.closest('span');
             const value = span.textContent;
-            const newValue = +value + 1;
-
             const totalLikes = document.querySelector('.total-likes');
-
             const valueTotalLikes = totalLikes.textContent;
 
-            totalLikes.textContent = +valueTotalLikes + 1;
+            let newValue;
+            
+            if(!clicked) {
+                newValue = +value + 1;
+                totalLikes.textContent = +valueTotalLikes + 1;
+                clicked = true;
+            } else {
+                newValue = +value - 1;
+                totalLikes.textContent = +valueTotalLikes - 1;
+                clicked = false;
+            }
 
             span.textContent = newValue;
             span.appendChild(icon);
@@ -54,11 +62,8 @@ function displayMedias(medias) {
 
 function displayTotalLikesAndPrice(medias, price) {
     const sectionMedias = document.querySelector('.list-medias');
-    const totalLikes = medias.reduce((acc, curr) => {
-        return acc + curr.likes;
-    }, 0);
 
-    const likesAndPrice = getTotalLikesAndPrice(totalLikes, price);
+    const likesAndPrice = getTotalLikesAndPrice(medias, price);
 
     sectionMedias.appendChild(likesAndPrice);
 }
@@ -83,6 +88,7 @@ async function init() {
     displayPhotographer(photographer);
     displayMedias(medias);
     displayTotalLikesAndPrice(medias, photographer.price);
+    openCarousel();
 }
 
 init();
