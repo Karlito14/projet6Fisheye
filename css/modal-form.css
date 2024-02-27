@@ -95,8 +95,27 @@ form input {
     padding-left: 20px;
 }
 
+:not(:focus).invalid {
+    outline: 4px solid red;
+    border-radius: 5px;
+}
+
+.error-input{
+    color: #110E0E;
+    font-size: 1.125em;
+    font-weight: 700;
+    margin-top: 7px;
+}
+
 #message{
     width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.4em;
+    padding-left: 20px;
+    padding-top: 20px;
+    font-family: "DM Sans", sans-serif;
+
 }
 
 .send_form {

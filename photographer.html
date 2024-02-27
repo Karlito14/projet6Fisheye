@@ -92,7 +92,9 @@
             <input
               type="text"
               id="first"
+              placeholder="Francois"
               name="first"
+              data-name="prenom"
               autocomplete="off"
               required
             />
@@ -102,7 +104,9 @@
             <input
               type="text"
               id="last"
+              placeholder="Dupont"
               name="last"
+              data-name="nom"
               autocomplete="off"
               required
             />
@@ -112,7 +116,9 @@
             <input
               type="email"
               id="email"
+              placeholder="dupont@hotmail.fr"
               name="email"
+              data-name="email"
               autocomplete="off"
               required
             />
@@ -122,7 +128,9 @@
             <textarea
               name="message"
               id="message"
-              rows="10"
+              placeholder="Votre message..."
+              data-name="message"
+              rows="8"
               autocomplete="off"
               required
             ></textarea>
@@ -139,7 +147,8 @@
     <script src="scripts/templates/photographer.js"></script>
     <script src="scripts/templates/medias.js"></script>
     <script src="scripts/templates/modal.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script type="module" src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/utils/check-form.js"></script>
+    <script type="module" src="scripts/utils/contactForm.js"></script>
   </body>
 </html>
