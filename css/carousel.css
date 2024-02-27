@@ -3,6 +3,20 @@
     --colors-secondary: #DB8876;
 }
 
+#carousel_modal{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    padding: 2.4rem;
+    overflow-y: scroll;
+    background-color: rgba(256, 256, 256, 0.9);
+    transition: .2s;
+}
+
 .modal-carousel{
     width: 80%;
     margin: auto;
@@ -11,10 +25,15 @@
     position: relative;
 }
 
+.btn-carousel {
+    background-color: transparent;
+    border: none;
+}
+
 .close-carousel {
     position: absolute;
     top: 10px;
-    right: 20px;
+    right: 10px;
     cursor: pointer;
     color: var(--color-primary);
     font-size: 2em;
@@ -26,14 +45,14 @@
     margin: 10px auto;
 }
 
-.btn-carousel{
+.icon-carousel{
     color: var(--color-primary);
     font-size: 2em;
     cursor: pointer;
 }
 
 .image-carousel {
-    height: 900px;
+    height: 80vh;
     width: 100%;
     border-radius: 5px;
     object-fit: cover;

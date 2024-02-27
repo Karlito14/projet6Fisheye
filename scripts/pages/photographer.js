@@ -88,7 +88,7 @@ async function init() {
     displayPhotographer(photographer);
     displayMedias(medias);
     displayTotalLikesAndPrice(medias, photographer.price);
-    openCarousel();
+    initCarousel();
 }
 
 init();

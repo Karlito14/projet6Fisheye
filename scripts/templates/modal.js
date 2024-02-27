@@ -21,6 +21,10 @@ class Modal {
         this.firstInputFocusable.focus();
     }
 
+    focusInFirstElementFocusable() {
+        this.firstElementFocusable.focus()
+    }
+
     findFirstElementFocusable(modal, focusableElementsArray) {
         const focusableElements = modal.querySelectorAll(focusableElementsArray);
 

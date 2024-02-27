@@ -151,21 +151,23 @@
       tabindex="-1"
     >
       <div role="document" class="modal-carousel">
-        <i 
-          role="button"
-          class="fa-solid fa-xmark close-carousel"
-          tabindex="0"
-          aria-label="close dialog"
-          data-dismiss="dialog"
-        ></i>
-        <i class="fa-solid fa-angle-left btn-carousel" aria-label="previous image" id="prev" role="button" tabindex="0"></i>
+        <button data-dismiss="dialog" class="close-carousel btn-carousel" aria-label="close dialog">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button class="btn-carousel" id="prev" aria-label="previous image">
+          <i class="fa-solid fa-angle-left icon-carousel" ></i>
+        </button>
+        
         <ul class="list-carousel">
           <li>
-            <img class="image-carousel" src="assets/medias/Animals_Majesty.jpg" alt="">
-            <h2 id="carrousel-title" class="title-img-carousel">Titre</h2>
+            <img class="image-carousel" src="" alt="">
+            <h2 id="carrousel-title" class="title-img-carousel"></h2>
           </li>
         </ul>
-        <i class="fa-solid fa-angle-right btn-carousel" aria-label="next image" id="next" role="button" tabindex="0"></i>
+        <button class="btn-carousel" id="next" aria-label="next image">
+          <i class="fa-solid fa-angle-right icon-carousel"></i>
+        </button>
+        
       </div>
     </div>
 
