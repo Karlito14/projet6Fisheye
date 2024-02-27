@@ -1,24 +1,23 @@
+import { CheckForm } from "./check-form.js";
 const buttonContact = document.querySelector('.contact_button');
-const modal = document.querySelector('#contact_modal');
-const main = document.querySelector('#main');
-const closeDialog = modal.querySelector('[data-dismiss]');
-const modalDocument = modal.querySelector('.modal');
+const elModalForm = document.querySelector('#contact_modal');
+const mainForm = document.querySelector('#main');
+const bodyForm = document.querySelector('body');
+const closeDialog = elModalForm.querySelector('[data-dismiss]');
+const modalDocument = elModalForm.querySelector('.modal');
 const form = modalDocument.querySelector('.form-modal');
 const inputFirst = form.querySelector('#first');
 const inputLast = form.querySelector('#last');
 const inputEmail = form.querySelector('#email');
 const textArea = form.querySelector('#message');
-const contactTitle = modal.querySelector('#dialog-title');
-const namePhotographer = document.querySelector('.div-info-title');
-const body = document.querySelector('body');
 
 const inputs = [inputFirst, inputLast, inputEmail, textArea];
 
-const modalForm = new Modal(modal, main);
+const modalForm = new Modal(elModalForm, mainForm);
 
 buttonContact.addEventListener('click', displayModal);
 closeDialog.addEventListener('click', closeModal);
-modal.addEventListener('click', closeModal);
+elModalForm.addEventListener('click', closeModal);
 modalDocument.addEventListener('click', (event) => {
     event.stopPropagation();
 });
@@ -75,14 +74,16 @@ form.addEventListener('submit', (event) => {
 
 
 function displayModal() {
+    const contactTitle = elModalForm.querySelector('#dialog-title');
+    const namePhotographer = document.querySelector('.div-info-title'); 
     if(!contactTitle.textContent.includes(namePhotographer.textContent)) {
         contactTitle.textContent += ` ${namePhotographer.textContent}`;
     }
 
-	modal.style.display = "block";
-    modal.setAttribute('aria-hidden', false);
-    main.setAttribute('aria-hidden', true);
-    body.style.overflow = 'hidden';
+	elModalForm.style.display = "block";
+    elModalForm.setAttribute('aria-hidden', false);
+    mainForm.setAttribute('aria-hidden', true);
+    bodyForm.style.overflow = 'hidden';
     modalForm.focusInFirstInputFocusable();
 
     window.addEventListener('keydown', (event) => {
@@ -99,10 +100,10 @@ function displayModal() {
 }
 
 function closeModal() {
-    modal.style.display = "none";
-    modal.setAttribute('aria-hidden', true);
-    main.setAttribute('aria-hidden', false);
-    body.removeAttribute('style');
+    elModalForm.style.display = "none";
+    elModalForm.setAttribute('aria-hidden', true);
+    mainForm.setAttribute('aria-hidden', false);
+    bodyForm.removeAttribute('style');
     buttonContact.focus();
 }
 

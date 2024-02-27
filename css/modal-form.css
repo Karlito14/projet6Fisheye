@@ -46,6 +46,7 @@ a{
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    border: none;
 }
 
 .modal header {
