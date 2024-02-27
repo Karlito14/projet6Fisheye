@@ -1,4 +1,6 @@
-class CheckForm {
+import { API_KEY_PASTEBIN } from "../../config/config.js";
+
+export class CheckForm {
 
     static displayError(input, message) {
         const elParent = input.closest('div');
@@ -48,6 +50,39 @@ class CheckForm {
 
         if(value.trim() === '') {
             throw new Error(`Le champ ${textArea.dataset.name} ne peut etre vide`);
+        }
+    }
+
+    static async sendDataToPastebin(formData) {
+        const object = {};
+
+        formData.forEach((value, key) => {
+            object[key] = value;
+        });
+
+        const apiKey = API_KEY_PASTEBIN;
+        const url = 'https://pastebin.com/api/api_post.php';
+
+        const data = {
+            api_dev_key: apiKey,
+            api_option: 'paste',
+            api_paste_code: JSON.stringify(object),
+            api_paste_name:  'formulaire',
+            api_paste_format: 'javascript',
+        }
+
+        const requestOptions = {
+            method: 'POST',
+            body: new URLSearchParams(data),
+        };
+          
+        // fetch request
+        try {
+            const reponse = await fetch(url, requestOptions);
+            const resultat = await reponse.text();
+            console.log(resultat);
+        } catch (error) {
+            console.error('Erreur :', error);
         }
     }
 }

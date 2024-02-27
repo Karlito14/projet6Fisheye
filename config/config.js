@@ -1,0 +1,1 @@
+export const API_KEY_PASTEBIN = '10mn5CtTkqvNbPYG9_RRwNCjl3rR7JBu';

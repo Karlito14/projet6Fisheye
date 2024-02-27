@@ -1,3 +1,4 @@
+import { CheckForm } from "./check-form.js";
 const buttonContact = document.querySelector('.contact_button');
 const buttonSubmit = document.querySelector('button[type=submit]');
 const modal = document.querySelector('#contact_modal');
@@ -10,6 +11,8 @@ const inputLast = document.querySelector('#last');
 const inputEmail = document.querySelector('#email');
 const textArea = document.querySelector('#message');
 
+const inputs = [inputFirst, inputLast, inputEmail, textArea]
+
 const modalForm = new Modal(modal, main);
 
 buttonContact.addEventListener('click', displayModal);
@@ -20,12 +23,16 @@ modalDocument.addEventListener('click', (event) => {
 });
 
 form.addEventListener('submit', (event) => {
+
+    let formOk = true;
+
     event.preventDefault();
     try {
         CheckForm.checkInputTextValidity(inputFirst);
         CheckForm.displayError(inputFirst, '');
     } catch (error) {
         CheckForm.displayError(inputFirst, error.message);
+        formOk = false;
     }
 
     try {
@@ -33,6 +40,7 @@ form.addEventListener('submit', (event) => {
         CheckForm.displayError(inputLast, '');
     } catch (error) {
         CheckForm.displayError(inputLast, error.message);
+        formOk = false;
     }
 
     try {
@@ -40,6 +48,7 @@ form.addEventListener('submit', (event) => {
         CheckForm.displayError(inputEmail, '');
     } catch (error) {
         CheckForm.displayError(inputEmail, error.message);
+        formOk = false;
     }
 
     try {
@@ -47,6 +56,19 @@ form.addEventListener('submit', (event) => {
         CheckForm.displayError(textArea, '');
     } catch (error) {
         CheckForm.displayError(textArea, error.message);
+        formOk = false;
+    }
+
+    if(formOk) {
+        const formData = new FormData(form);
+        CheckForm.sendDataToPastebin(formData);
+        for(let input of inputs) {
+            console.log(input.value);
+            input.value = '';
+        }
+        setTimeout(() => {
+            closeModal();
+        },200)
     }
 });
 
