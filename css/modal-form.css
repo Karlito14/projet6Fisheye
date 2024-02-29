@@ -42,7 +42,6 @@ a{
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     padding: 35px;
     margin: auto;
@@ -52,7 +51,6 @@ a{
 .modal header {
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 15px;
     text-align: left;
 }
 
@@ -63,6 +61,12 @@ a{
 .modal header h2 {
     font-size: 3em;
     font-weight: normal;
+}
+
+.name-form {
+    font-size: 3em;
+    font-weight: normal;
+    text-align: left;
 }
 
 /************************* Form *************************/

@@ -6,6 +6,7 @@ const bodyForm = document.querySelector('body');
 const closeDialog = elModalForm.querySelector('[data-dismiss]');
 const modalDocument = elModalForm.querySelector('.modal');
 const form = modalDocument.querySelector('.form-modal');
+const headerForm = modalDocument.querySelector('header');
 const inputFirst = form.querySelector('#first');
 const inputLast = form.querySelector('#last');
 const inputEmail = form.querySelector('#email');
@@ -74,12 +75,16 @@ form.addEventListener('submit', (event) => {
 
 
 function displayModal() {
-    const contactTitle = elModalForm.querySelector('#dialog-title');
     const namePhotographer = document.querySelector('.div-info-title'); 
-    if(!contactTitle.textContent.includes(namePhotographer.textContent)) {
-        contactTitle.textContent += ` ${namePhotographer.textContent}`;
+    
+    let paragrapheName = document.querySelector('.name-form');
+    if(!paragrapheName) {
+        paragrapheName = document.createElement('p');
+        paragrapheName.textContent = namePhotographer.textContent;
+        paragrapheName.setAttribute('class', 'name-form');
+        headerForm.after(paragrapheName);
     }
-
+    
 	elModalForm.style.display = "block";
     elModalForm.setAttribute('aria-hidden', false);
     mainForm.setAttribute('aria-hidden', true);
@@ -87,15 +92,15 @@ function displayModal() {
     modalForm.focusInFirstInputFocusable();
 
     window.addEventListener('keydown', (event) => {
-        if(event.code === 'Tab') {
-            modalForm.closeFocusInTheModal(event);
-        }
-    })
+        if(elModalForm.style.display === 'block') {
+            if(event.code === 'Tab') {
+                modalForm.closeFocusInTheModal(event);
+            }
 
-    window.addEventListener('keydown', (event) => {
-        if(event.code === 'Escape') {
-            closeModal();
-        }
+            if(event.code === 'Escape') {
+                closeModal();
+            }
+        }  
     })
 }
 

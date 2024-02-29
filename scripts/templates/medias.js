@@ -20,14 +20,12 @@ function mediasTemplate(media) {
         } else {
             elMedia = document.createElement('video');
 
-            const source = document.createElement('source');
-            source.setAttribute('src', videoMedia);
-            source.setAttribute('type', 'video/mp4');
+            elMedia.setAttribute('src', videoMedia);
+            elMedia.setAttribute('type', 'video/mp4');
 
             const erreur = document.createElement('span');
             erreur.textContent = 'Votre navigateur ne prend pas en charge les vidéos HTML5'
 
-            elMedia.appendChild(source);
             elMedia.appendChild(erreur);
         }
 
@@ -95,10 +93,32 @@ function sortByValue(medias, value) {
                     valueB = +b.date.split('-')[2];
                 }
             }
-
             return valueB - valueA;
         })
     }
-
     return medias;
+}
+
+function updateValueLikes(icon, clicked) {
+    const span = icon.closest('span');
+    const value = span.textContent;
+    const totalLikes = document.querySelector('.total-likes');
+    const valueTotalLikes = totalLikes.textContent;
+
+    let newValue;
+    
+    if(!clicked) {
+        newValue = +value + 1;
+        totalLikes.textContent = +valueTotalLikes + 1;
+        clicked = true;
+    } else {
+        newValue = +value - 1;
+        totalLikes.textContent = +valueTotalLikes - 1;
+        clicked = false;
+    }
+
+    span.textContent = newValue;
+    span.appendChild(icon);
+
+    return clicked;
 }

@@ -2,24 +2,49 @@ const modal = document.querySelector('#carousel_modal');
 const main = document.querySelector('#main');
 const body = document.querySelector('body');
 const buttonClose = modal.querySelector('.close-carousel');
-const imgCarousel = modal.querySelector('.image-carousel');
 const titleCarousel = modal.querySelector('#carrousel-title');
 const carousel = modal.querySelector('.modal-carousel');
+
 const modalCarousel = new Modal(modal, main);
 
 let mediaFocus;
 
 function initCarousel() {
     const allMedias = main.querySelectorAll('.image-media');
+    const elLiCarousel = carousel.querySelector('#li-list-carousel');
+
     
     for(let media of allMedias) {
         media.addEventListener('click', (event) => {
             const source = event.target.src;
             const title = event.target.dataset.name;
 
-            imgCarousel.src = source;
+            elLiCarousel.firstElementChild.remove();
+
+            let elMediaCarousel;
+
+            if(event.target.localName === 'video') {
+                const videoCarousel = document.createElement('video');
+                videoCarousel.setAttribute('controls', 'controls');
+                videoCarousel.setAttribute('type', 'video/mp4');
+                videoCarousel.setAttribute('autoplay', 'autoplay');
+                videoCarousel.textContent = 'Votre navigateur ne permet pas de lire les vidéos';
+
+                elMediaCarousel = videoCarousel;
+            } else {
+                const imageCarousel = document.createElement('img');
+                imageCarousel.setAttribute('alt', '');
+
+                elMediaCarousel = imageCarousel;
+            }
+
+            elMediaCarousel.src = source;
+            elMediaCarousel.setAttribute('class', 'media-carousel');
+
             titleCarousel.textContent = title;
             mediaFocus = media;
+
+            elLiCarousel.prepend(elMediaCarousel)
 
             setTimeout(() => {
                 openCarousel();
@@ -48,15 +73,15 @@ function openCarousel() {
     modalCarousel.focusInFirstElementFocusable();
 
     window.addEventListener('keydown', (event) => {
-        if(event.code === 'Tab') {
-            modalCarousel.closeFocusInTheModal(event);
-        }
-    })
-
-    window.addEventListener('keydown', (event) => {
-        if(event.code === 'Escape') {
-            closeCarousel();
-        }
+        if(modal.style.display === 'block') {
+            if(event.code === 'Tab') {
+                modalCarousel.closeFocusInTheModal(event);
+            }
+    
+            if(event.code === 'Escape') {
+                closeCarousel();
+            }
+        }     
     })
 }
 
