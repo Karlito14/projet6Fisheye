@@ -10,47 +10,86 @@ const modalCarousel = new Modal(modal, main);
 let mediaFocus;
 
 function initCarousel() {
-    const allMedias = main.querySelectorAll('.image-media');
+    const allMedias = Array.from(main.querySelectorAll('.image-media'));
     const elLiCarousel = carousel.querySelector('#li-list-carousel');
+    const next = carousel.querySelector('#next');
+    const prev = carousel.querySelector('#prev');
 
-    
+
+    let index;
+
+    next.addEventListener('click', () => {
+        index++;
+
+        if(index > allMedias.length - 1) {
+            index = 0;
+        }
+        elLiCarousel.firstElementChild.remove();
+
+        const elMediaCarousel = nextMedia(allMedias, index);
+            
+        elLiCarousel.prepend(elMediaCarousel);
+
+    })
+
+    prev.addEventListener('click', () => {
+        index--;
+
+        if(index < 0) {
+            index = allMedias.length - 1;
+        }
+        elLiCarousel.firstElementChild.remove();
+
+        const elMediaCarousel = nextMedia(allMedias, index);
+            
+        elLiCarousel.prepend(elMediaCarousel);
+
+    })
+
     for(let media of allMedias) {
-        media.addEventListener('click', (event) => {
-            const source = event.target.src;
-            const title = event.target.dataset.name;
-
+        media.addEventListener('click', () => {
             elLiCarousel.firstElementChild.remove();
-
-            let elMediaCarousel;
-
-            if(event.target.localName === 'video') {
-                const videoCarousel = document.createElement('video');
-                videoCarousel.setAttribute('controls', 'controls');
-                videoCarousel.setAttribute('type', 'video/mp4');
-                videoCarousel.setAttribute('autoplay', 'autoplay');
-                videoCarousel.textContent = 'Votre navigateur ne permet pas de lire les vidéos';
-
-                elMediaCarousel = videoCarousel;
-            } else {
-                const imageCarousel = document.createElement('img');
-                imageCarousel.setAttribute('alt', '');
-
-                elMediaCarousel = imageCarousel;
-            }
-
-            elMediaCarousel.src = source;
-            elMediaCarousel.setAttribute('class', 'media-carousel');
-
-            titleCarousel.textContent = title;
+            index = allMedias.indexOf(media);
             mediaFocus = media;
 
-            elLiCarousel.prepend(elMediaCarousel)
+            const elMediaCarousel = nextMedia(allMedias, index);
+            
+            elLiCarousel.prepend(elMediaCarousel);
 
             setTimeout(() => {
                 openCarousel();
             },200);
         })
     }
+}
+
+function nextMedia(allMedias, index) {
+    const source = allMedias[index].src;
+    const title = allMedias[index].dataset.name;
+
+    let elMediaCarousel;
+
+    if(allMedias[index].localName === 'video') {
+        const videoCarousel = document.createElement('video');
+        videoCarousel.setAttribute('controls', 'controls');
+        videoCarousel.setAttribute('type', 'video/mp4');
+        videoCarousel.setAttribute('autoplay', 'autoplay');
+        videoCarousel.textContent = 'Votre navigateur ne permet pas de lire les vidéos';
+
+        elMediaCarousel = videoCarousel;
+    } else {
+        const imageCarousel = document.createElement('img');
+        imageCarousel.setAttribute('alt', '');
+
+        elMediaCarousel = imageCarousel;
+    }
+
+    elMediaCarousel.src = source;
+    elMediaCarousel.setAttribute('class', 'media-carousel');
+
+    titleCarousel.textContent = title;
+    
+    return elMediaCarousel;
 }
 
 buttonClose.addEventListener('click', () => {
