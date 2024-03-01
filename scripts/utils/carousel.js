@@ -23,7 +23,19 @@ function initCarousel() {
             index = 0;
         }
         
-        displayMediaCarousel(allMedias[index]);
+        mediaFocus = displayMediaCarousel(allMedias[index]);
+    });
+
+    window.addEventListener('keydown', (event) => {
+        if(event.code === 'ArrowRight' && modal.style.display === 'block') {
+            index++;
+
+            if(index > allMedias.length - 1) {
+                index = 0;
+            }
+            
+            mediaFocus = displayMediaCarousel(allMedias[index]);
+        }
     })
 
     prev.addEventListener('click', () => {
@@ -33,30 +45,47 @@ function initCarousel() {
             index = allMedias.length - 1;
         }
 
-        displayMediaCarousel(allMedias[index]);       
+        mediaFocus = displayMediaCarousel(allMedias[index]);       
     })
 
+    window.addEventListener('keydown', (event) => {
+        if(event.code === 'ArrowLeft' && modal.style.display === 'block') {
+            index--;
+
+            if(index < 0) {
+                index = allMedias.length - 1;
+            }
+            
+            mediaFocus = displayMediaCarousel(allMedias[index]);
+        }
+    })
 
     for(let media of allMedias) {
         media.addEventListener('click', () => {
             index = allMedias.indexOf(media);
 
-            displayMediaCarousel(allMedias[index]);
-            modalCarousel.displayModal();
-            
-            setTimeout(() => {
-            },200);
+            mediaFocus = displayMediaCarousel(allMedias[index]);
+            modalCarousel.displayModal();  
         })
     }
 }
 
 buttonClose.addEventListener('click', () => {
     modalCarousel.closeModal();
+    mediaFocus.focus();
 });
 
 modal.addEventListener('click', () => {
     modalCarousel.closeModal();
+    mediaFocus.focus();
 });
+
+window.addEventListener('keydown', (event) => {
+    if(event.code === 'Escape' && modal.style.display === 'block') {
+        modalCarousel.closeModal();
+        mediaFocus.focus();
+    }
+})
 
 carousel.addEventListener('click', (event) => {
     event.stopPropagation();

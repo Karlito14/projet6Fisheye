@@ -26,5 +26,5 @@ function displayMediaCarousel(media) {
     titleCarousel.textContent = title;
     
     elLiCarousel.prepend(elMediaCarousel);
-    mediaFocus = media;
+    return media;
 }

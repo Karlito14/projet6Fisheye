@@ -54,12 +54,8 @@ class Modal {
         this.body.style.overflow = 'hidden';
 
         window.addEventListener('keydown', (event) => {
-            if(event.code === 'Tab') {
+            if(event.code === 'Tab' && this.modal.style.display === "block") {
                 this.closeFocusInTheModal(event);
-            }
-
-            if(event.code === 'Escape') {
-                this.closeModal();
             }
         })
     }

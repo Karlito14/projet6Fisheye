@@ -54,7 +54,9 @@ a{
     text-align: left;
 }
 
-.modal header img {
+.close-form {
+    border: none;
+    background-color: transparent;
     cursor: pointer;
 }
 

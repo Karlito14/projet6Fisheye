@@ -19,6 +19,11 @@ const modalForm = new Modal(elModalForm, mainForm, bodyForm);
 buttonContact.addEventListener('click', displayModal);
 closeDialog.addEventListener('click', closeModal);
 elModalForm.addEventListener('click', closeModal);
+window.addEventListener('keydown', (event) => {
+    if(event.code === 'Escape' && elModalForm.style.display === 'block') {
+        closeModal();
+    }
+})
 modalDocument.addEventListener('click', (event) => {
     event.stopPropagation();
 });
@@ -85,29 +90,10 @@ function displayModal() {
         headerForm.after(paragrapheName);
     }
     
-	elModalForm.style.display = "block";
-    elModalForm.setAttribute('aria-hidden', false);
-    mainForm.setAttribute('aria-hidden', true);
-    bodyForm.style.overflow = 'hidden';
-    modalForm.focusInFirstElementFocusable();
-
-    window.addEventListener('keydown', (event) => {
-        if(elModalForm.style.display === 'block') {
-            if(event.code === 'Tab') {
-                modalForm.closeFocusInTheModal(event);
-            }
-
-            if(event.code === 'Escape') {
-                closeModal();
-            }
-        }  
-    })
+	modalForm.displayModal();
 }
 
 function closeModal() {
-    elModalForm.style.display = "none";
-    elModalForm.setAttribute('aria-hidden', true);
-    mainForm.setAttribute('aria-hidden', false);
-    bodyForm.removeAttribute('style');
+    modalForm.closeModal()
     buttonContact.focus();
 }
