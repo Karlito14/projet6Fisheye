@@ -1,10 +1,10 @@
 import { Api } from "../api/api.js";
-
-const apiData = new Api('./data/photographers.json');
+import { Photographer } from "../templates/photographer.js";
+import { Media, sortByValue, getTotalLikesAndPrice, updateValueLikes } from "../templates/medias.js";
 
 async function getMediasAndPhotographeById(id) {
+    const apiData = new Api('./data/photographers.json');
     const result = await apiData.getData()
-
     const medias = result.media;
 
     const mediasFiltered = medias.filter((media) => media.photographerId === id);
@@ -17,9 +17,9 @@ async function getMediasAndPhotographeById(id) {
 function displayPhotographer(photographer) {
     const photographerHeader = document.querySelector('.photograph-header');
 
-    const photographerModel = photographerTemplate(photographer);
+    const photographerModel = new Photographer(photographer);
 
-    const [divInfo, image] = photographerModel.getUserCardPhotographer();
+    const [divInfo, image] = photographerModel.getUserCardPhotographerPage();
 
     photographerHeader.prepend(divInfo);
     photographerHeader.append(image)
@@ -30,7 +30,7 @@ function displayMedias(medias) {
     elMediasList.innerHTML = '';
 
     medias.forEach(media => {
-        const mediaModel = mediasTemplate(media);
+        const mediaModel = new Media(media);
         const mediaCard = mediaModel.getMediaCard();
         elMediasList.appendChild(mediaCard);
     });
@@ -63,7 +63,7 @@ async function init() {
 
     // Trier les oeuvres selon l'option selected
     const select = document.querySelector('.select-options');
-    const medias = sortByValue(mediasFiltered, select.value);
+    let medias = sortByValue(mediasFiltered, select.value);
 
     select.addEventListener('input', (event) => {
         medias = sortByValue(mediasFiltered, event.target.value);

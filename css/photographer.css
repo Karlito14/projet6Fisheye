@@ -55,6 +55,8 @@ header {
 
 .div-contact_button {
     width: 30%;
+    display: flex;
+    justify-content: center;
 }
 
 .div-info-title {
@@ -76,6 +78,8 @@ header {
 
 .div-img {
     width: 30%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .div-img-image {

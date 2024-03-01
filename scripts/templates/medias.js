@@ -1,10 +1,18 @@
-function mediasTemplate(media) {
-    const {title, likes, image, date, video} = media;
+class Media {
+    constructor(media) {
+        this.title = media.title;
+        this.likes = media.likes;
+        this.image = media.image;
+        this.date = media.date;
+        this.video = media.video;
+        this.mediaPath = this.getPathMedia();
+    }
 
-    const picture = `assets/medias/${image}`;
-    const videoMedia = `assets/medias/${video}`;
+    getPathMedia(){
+        return `assets/medias/${this.image || this.video}`;
+    }
 
-    function getMediaCard() {
+    getMediaCard() {
         const elementLi = document.createElement('li');
         elementLi.setAttribute('class', 'media-item');
 
@@ -13,14 +21,11 @@ function mediasTemplate(media) {
 
         let elMedia;
 
-        if(image) {
+        if(this.image) {
             elMedia = document.createElement('img');
-            elMedia.setAttribute('src', picture);
             elMedia.setAttribute('alt', "");
         } else {
             elMedia = document.createElement('video');
-
-            elMedia.setAttribute('src', videoMedia);
             elMedia.setAttribute('type', 'video/mp4');
 
             const erreur = document.createElement('span');
@@ -29,22 +34,23 @@ function mediasTemplate(media) {
             elMedia.appendChild(erreur);
         }
 
+        elMedia.setAttribute('src', this.mediaPath);
         elMedia.setAttribute('class', 'image-media');
         elMedia.setAttribute('tabindex', '0');
         elMedia.setAttribute('aria-haspopup', 'dialog');
         elMedia.setAttribute('aria-controls', 'carousel_modal');
-        elMedia.setAttribute('data-name', `${title}`);
+        elMedia.setAttribute('data-name', `${this.title}`);
 
         const divInfo = document.createElement('div');
         divInfo.setAttribute('class', 'div-info-media');
         
         const textInfo = 
-        `<h2 class='text-media'>${title}</h2>
-         <span class='number-likes'>${likes}<i class='fa-solid fa-heart icon-media' aria-label='likes'></i>
+        `<h2 class='text-media'>${this.title}</h2>
+         <span class='number-likes'>${this.likes}<i class='fa-solid fa-heart icon-media' aria-label='likes'></i>
          </span>
         `;
 
-        divInfo.innerHTML = textInfo
+        divInfo.innerHTML = textInfo;
 
         article.appendChild(elMedia);
         article.appendChild(divInfo);
@@ -52,8 +58,6 @@ function mediasTemplate(media) {
 
         return elementLi;
     }
-
-    return {title, likes, picture, date, videoMedia, getMediaCard};
 }
 
 function getTotalLikesAndPrice(medias, price) {
@@ -98,3 +102,29 @@ function sortByValue(medias, value) {
     }
     return medias;
 }
+
+function updateValueLikes(icon, clicked) {
+    const span = icon.closest('span');
+    const value = span.textContent;
+    const totalLikes = document.querySelector('.total-likes');
+    const valueTotalLikes = totalLikes.textContent;
+
+    let newValue;
+    
+    if(!clicked) {
+        newValue = +value + 1;
+        totalLikes.textContent = +valueTotalLikes + 1;
+        clicked = true;
+    } else {
+        newValue = +value - 1;
+        totalLikes.textContent = +valueTotalLikes - 1;
+        clicked = false;
+    }
+
+    span.textContent = newValue;
+    span.appendChild(icon);
+
+    return clicked;
+}
+
+export {updateValueLikes, sortByValue, getTotalLikesAndPrice, Media}

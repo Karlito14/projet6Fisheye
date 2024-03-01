@@ -8,17 +8,12 @@ const focusableElementsArray = [
 ];
 
 class Modal {
-
-    constructor(modal, main) {
+    constructor(modal, main, body) {
         this.main = main;
         this.modal = modal;
+        this.body = body;
         this.firstElementFocusable = this.findFirstElementFocusable(this.modal, focusableElementsArray);
-        this.firstInputFocusable = this.findFirstInputFocusable(this.modal, focusableElementsArray);
         this.lastElementFocusable = this.findLastFirstElementFocusable(this.modal, focusableElementsArray);
-    }
-    
-    focusInFirstInputFocusable() {
-        this.firstInputFocusable.focus();
     }
 
     focusInFirstElementFocusable() {
@@ -29,12 +24,6 @@ class Modal {
         const focusableElements = modal.querySelectorAll(focusableElementsArray);
 
         return focusableElements[0];
-    }
-
-    findFirstInputFocusable(modal, focusableElementsArray) {
-        const focusableElements = modal.querySelectorAll(focusableElementsArray);
-
-        return focusableElements[1];
     }
 
     findLastFirstElementFocusable(modal, focusableElementsArray) {
@@ -61,15 +50,14 @@ class Modal {
         this.modal.style.display = "block";
         this.modal.removeAttribute('aria-hidden');
         this.main.setAttribute('aria-hidden', true);
-        this.focusInFirstInputFocusable();
+        this.focusInFirstElementFocusable();
+        this.body.style.overflow = 'hidden';
 
         window.addEventListener('keydown', (event) => {
             if(event.code === 'Tab') {
                 this.closeFocusInTheModal(event);
             }
-        })
-    
-        window.addEventListener('keydown', (event) => {
+
             if(event.code === 'Escape') {
                 this.closeModal();
             }
@@ -80,5 +68,6 @@ class Modal {
         this.modal.style.display = "none";
         this.modal.setAttribute('aria-hidden', true);
         this.main.removeAttribute('aria-hidden');
+        this.body.removeAttribute('style');
     }
 }

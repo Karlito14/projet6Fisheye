@@ -1,9 +1,9 @@
 import { Api } from "../api/api.js";
 import { Photographer } from "../templates/photographer.js";
 
-const apiData = new Api('./data/photographers.json')
 
 async function getPhotographers() {
+    const apiData = new Api('./data/photographers.json');
     const result = await apiData.getData();
     const photographers = result.photographers;
 
@@ -16,8 +16,6 @@ function displayData(photographers) {
     photographers.forEach((photographer) => {
         const photographerModel = new Photographer(photographer);
         const photographerCardDom = photographerModel.getUserCardHomePage();
-        /*const photographerModel = photographerTemplate(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();*/
         photographersListSection.appendChild(photographerCardDom);
     });
 }
@@ -29,4 +27,3 @@ async function init() {
 }
 
 init();
-    

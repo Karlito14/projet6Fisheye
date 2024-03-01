@@ -1,27 +1,3 @@
-function updateValueLikes(icon, clicked) {
-    const span = icon.closest('span');
-    const value = span.textContent;
-    const totalLikes = document.querySelector('.total-likes');
-    const valueTotalLikes = totalLikes.textContent;
-
-    let newValue;
-    
-    if(!clicked) {
-        newValue = +value + 1;
-        totalLikes.textContent = +valueTotalLikes + 1;
-        clicked = true;
-    } else {
-        newValue = +value - 1;
-        totalLikes.textContent = +valueTotalLikes - 1;
-        clicked = false;
-    }
-
-    span.textContent = newValue;
-    span.appendChild(icon);
-
-    return clicked;
-}
-
 function displayMediaCarousel(media) {
     const elLiCarousel = carousel.querySelector('#li-list-carousel');
 

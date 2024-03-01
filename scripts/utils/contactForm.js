@@ -14,7 +14,7 @@ const textArea = form.querySelector('#message');
 
 const inputs = [inputFirst, inputLast, inputEmail, textArea];
 
-const modalForm = new Modal(elModalForm, mainForm);
+const modalForm = new Modal(elModalForm, mainForm, bodyForm);
 
 buttonContact.addEventListener('click', displayModal);
 closeDialog.addEventListener('click', closeModal);
@@ -68,7 +68,7 @@ form.addEventListener('submit', (event) => {
             input.value = '';
         }
         setTimeout(() => {
-            modalForm.closeModal();
+            closeModal();
         },200)
     }
 });
@@ -89,7 +89,7 @@ function displayModal() {
     elModalForm.setAttribute('aria-hidden', false);
     mainForm.setAttribute('aria-hidden', true);
     bodyForm.style.overflow = 'hidden';
-    modalForm.focusInFirstInputFocusable();
+    modalForm.focusInFirstElementFocusable();
 
     window.addEventListener('keydown', (event) => {
         if(elModalForm.style.display === 'block') {
@@ -111,4 +111,3 @@ function closeModal() {
     bodyForm.removeAttribute('style');
     buttonContact.focus();
 }
-

@@ -100,12 +100,12 @@ form input {
 }
 
 :not(:focus).invalid {
-    outline: 4px solid red;
+    outline: 4px solid #000;
     border-radius: 5px;
 }
 
 .error-input{
-    color: #312E2E;
+    color: #000;
     font-size: 1.125em;
     font-weight: 700;
     margin-top: 7px;
