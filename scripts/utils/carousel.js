@@ -36,6 +36,10 @@ function initCarousel() {
         displayMediaCarousel(allMedias[index]);       
     })
 
+    window.addEventListener('keydown', (event) => {
+        console.log(modalCarousel)
+    })
+
     for(let media of allMedias) {
         media.addEventListener('click', () => {
             index = allMedias.indexOf(media);
@@ -43,18 +47,18 @@ function initCarousel() {
             displayMediaCarousel(allMedias[index]);
             
             setTimeout(() => {
-                openCarousel();
+                modalCarousel.displayModal();
             },200);
         })
     }
 }
 
 buttonClose.addEventListener('click', () => {
-    closeCarousel();
+    modalCarousel.closeModal();
 });
 
 modal.addEventListener('click', () => {
-    closeCarousel();
+    modalCarousel.closeModal();
 });
 
 carousel.addEventListener('click', (event) => {

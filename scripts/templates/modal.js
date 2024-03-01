@@ -57,7 +57,7 @@ class Modal {
         }
     }
 
-    /* displayModal() {
+    displayModal() {
         this.modal.style.display = "block";
         this.modal.removeAttribute('aria-hidden');
         this.main.setAttribute('aria-hidden', true);
@@ -80,5 +80,5 @@ class Modal {
         this.modal.style.display = "none";
         this.modal.setAttribute('aria-hidden', true);
         this.main.removeAttribute('aria-hidden');
-    }*/
+    }
 }

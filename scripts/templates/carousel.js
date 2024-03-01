@@ -34,13 +34,12 @@ function displayMediaCarousel(media) {
         const videoCarousel = document.createElement('video');
         videoCarousel.setAttribute('controls', 'controls');
         videoCarousel.setAttribute('type', 'video/mp4');
-        videoCarousel.setAttribute('autoplay', 'autoplay');
         videoCarousel.textContent = 'Votre navigateur ne permet pas de lire les vidéos';
 
         elMediaCarousel = videoCarousel;
     } else {
         const imageCarousel = document.createElement('img');
-        imageCarousel.setAttribute('alt', '');
+        imageCarousel.setAttribute('alt', title);
 
         elMediaCarousel = imageCarousel;
     }
@@ -52,32 +51,4 @@ function displayMediaCarousel(media) {
     
     elLiCarousel.prepend(elMediaCarousel);
     mediaFocus = media;
-}
-
-function openCarousel() {
-    modal.style.display = "block";
-    modal.setAttribute('aria-hidden', false);
-    main.setAttribute('aria-hidden', true);
-    body.style.overflow = 'hidden';
-    modalCarousel.focusInFirstElementFocusable();
-
-    window.addEventListener('keydown', (event) => {
-        if(modal.style.display === 'block') {
-            if(event.code === 'Tab') {
-                modalCarousel.closeFocusInTheModal(event);
-            }
-    
-            if(event.code === 'Escape') {
-                closeCarousel();
-            }
-        }     
-    })
-}
-
-function closeCarousel() {
-    modal.style.display = "none";
-    modal.setAttribute('aria-hidden', true);
-    main.setAttribute('aria-hidden', false);
-    body.removeAttribute('style');
-    mediaFocus.focus();
 }
