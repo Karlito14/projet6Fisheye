@@ -1,6 +1,9 @@
+import { Api } from "../api/api.js";
+
+const apiData = new Api('./data/photographers.json');
+
 async function getMediasAndPhotographeById(id) {
-    const response = await fetch('./data/photographers.json');
-    const result = await response.json();
+    const result = await apiData.getData()
 
     const medias = result.media;
 
@@ -60,7 +63,7 @@ async function init() {
 
     // Trier les oeuvres selon l'option selected
     const select = document.querySelector('.select-options');
-    medias = sortByValue(mediasFiltered, select.value);
+    const medias = sortByValue(mediasFiltered, select.value);
 
     select.addEventListener('input', (event) => {
         medias = sortByValue(mediasFiltered, event.target.value);

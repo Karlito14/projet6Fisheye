@@ -1,8 +1,74 @@
+export class Photographer {
+    constructor(data) {
+        this.name = data.name;
+        this.portrait = data.portrait;
+        this.city = data.city;
+        this.country = data.country;
+        this.tagline = data.tagline;
+        this.price = data.price;
+        this.id = data.id;
+        this.picture = this.getImagePath();
+    }
+
+    getImagePath() {
+        return `assets/photographers/${this.portrait}`;
+    }
+
+    // Affichage du photographe Page d'accueil
+    getUserCardHomePage() {
+        const listeItem = document.createElement('li');
+
+        const article = document.createElement( 'article' );
+        article.setAttribute('class', 'article');
+
+        listeItem.appendChild(article);
+
+        const link = document.createElement('a');
+        link.setAttribute('href', `photographer.html?id=${this.id}`);
+        link.setAttribute('target', `_self`);
+
+        const img = document.createElement( 'img' );
+        img.setAttribute('class', 'article-img');
+        img.setAttribute("src", this.picture);
+        img.setAttribute('alt', "");
+
+        link.appendChild(img);
+
+        const h2 = document.createElement( 'h2' );
+        h2.setAttribute('class', 'article-title');
+        h2.textContent =this.name;
+
+        link.appendChild(h2);
+
+        const adress = document.createElement('adress');
+        adress.setAttribute('class', 'article-adress');
+        adress.textContent = `${this.city}, ${this.country}`;
+
+        const citation = document.createElement('q');
+        citation.setAttribute('class', 'article-citation');
+        citation.textContent = this.tagline;
+
+        const elPrice = document.createElement('span');
+        elPrice.setAttribute('class', 'article-price');
+        elPrice.setAttribute('aria-label', 'prix journalier du photographe');
+        elPrice.textContent = `${this.price}€/jour`;
+
+        article.appendChild(link);
+        article.appendChild(adress);
+        article.appendChild(citation);
+        article.appendChild(elPrice);
+
+        return (listeItem);
+    }
+
+}
+
 function photographerTemplate(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
+    // Affichage du photographe Page d'accueil
     function getUserCardDOM() {
         const listeItem = document.createElement('li');
 
@@ -49,6 +115,8 @@ function photographerTemplate(data) {
         return (listeItem);
     }
 
+
+    // Affichage du photographe dans la page photographer.js
     function getUserCardPhotographer() {
         const divInfo = document.createElement('div');
         divInfo.setAttribute('class', 'div-info');
@@ -75,7 +143,7 @@ function photographerTemplate(data) {
         const img = document.createElement( 'img' );
         img.setAttribute('class', 'div-img-image');
         img.setAttribute("src", picture);
-        img.setAttribute('alt', `${name}`);
+        img.setAttribute('alt', name);
 
         return [divInfo, img];
     }
