@@ -63,7 +63,7 @@ form.addEventListener('submit', (event) => {
             input.value = '';
         }
         setTimeout(() => {
-            closeModalForm();
+            modalForm.closeModal();
         },200)
     }
 });
