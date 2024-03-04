@@ -23,7 +23,7 @@ class Media {
 
         if(this.image) {
             elMedia = document.createElement('img');
-            elMedia.setAttribute('alt', "");
+            elMedia.setAttribute('alt', this.title);
         } else {
             elMedia = document.createElement('video');
             elMedia.setAttribute('type', 'video/mp4');

@@ -16,6 +16,9 @@ async function getMediasAndPhotographeById(id) {
 
 function displayPhotographer(photographer) {
     const photographerHeader = document.querySelector('.photograph-header');
+    // ajout du nom du photographe dans le formulaire
+    const nameForm = document.querySelector('.name-form');
+    nameForm.textContent = photographer.name;
 
     const photographerModel = new Photographer(photographer);
 
@@ -73,7 +76,8 @@ async function init() {
     displayPhotographer(photographer);
     displayMedias(medias);
     displayTotalLikesAndPrice(medias, photographer.price);
-    initCarousel();
+
+    initCarouselModal();
 }
 
 init();

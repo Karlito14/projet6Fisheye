@@ -6,7 +6,6 @@ const bodyForm = document.querySelector('body');
 const closeDialog = elModalForm.querySelector('[data-dismiss]');
 const modalDocument = elModalForm.querySelector('.modal');
 const form = modalDocument.querySelector('.form-modal');
-const headerForm = modalDocument.querySelector('header');
 const inputFirst = form.querySelector('#first');
 const inputLast = form.querySelector('#last');
 const inputEmail = form.querySelector('#email');
@@ -16,12 +15,14 @@ const inputs = [inputFirst, inputLast, inputEmail, textArea];
 
 const modalForm = new Modal(elModalForm, mainForm, bodyForm);
 
-buttonContact.addEventListener('click', displayModal);
-closeDialog.addEventListener('click', closeModal);
-elModalForm.addEventListener('click', closeModal);
+buttonContact.addEventListener('click', () => {
+    modalForm.displayModal();
+});
+closeDialog.addEventListener('click', closeModalForm);
+elModalForm.addEventListener('click', closeModalForm);
 window.addEventListener('keydown', (event) => {
     if(event.code === 'Escape' && elModalForm.style.display === 'block') {
-        closeModal();
+        closeModalForm();
     }
 })
 modalDocument.addEventListener('click', (event) => {
@@ -73,27 +74,12 @@ form.addEventListener('submit', (event) => {
             input.value = '';
         }
         setTimeout(() => {
-            closeModal();
+            closeModalForm();
         },200)
     }
 });
 
-
-function displayModal() {
-    const namePhotographer = document.querySelector('.div-info-title'); 
-    
-    let paragrapheName = document.querySelector('.name-form');
-    if(!paragrapheName) {
-        paragrapheName = document.createElement('p');
-        paragrapheName.textContent = namePhotographer.textContent;
-        paragrapheName.setAttribute('class', 'name-form');
-        headerForm.after(paragrapheName);
-    }
-    
-	modalForm.displayModal();
-}
-
-function closeModal() {
+function closeModalForm() {
     modalForm.closeModal()
     buttonContact.focus();
 }

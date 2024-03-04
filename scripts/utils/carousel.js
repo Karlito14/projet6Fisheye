@@ -5,9 +5,32 @@ const buttonClose = modal.querySelector('.close-carousel');
 const titleCarousel = modal.querySelector('#carrousel-title');
 const carousel = modal.querySelector('.modal-carousel');
 
-const modalCarousel = new Modal(modal, main, body);
+function initCarouselModal() {
+    const modalCarousel = new Carousel(modal, carousel, main, body);
+}
 
+/*
 let mediaFocus;
+
+function incrementIndex(index, allMedias) {
+    index++;
+
+    if(index > allMedias.length - 1) {
+        index = 0;
+    }
+
+    return index;
+}
+
+function decrementIndex(index, allMedias) {
+    index--;
+
+    if(index < 0) {
+        index = allMedias.length - 1;
+    }
+
+    return index;
+}
 
 function initCarousel() {
     const allMedias = Array.from(main.querySelectorAll('.image-media'));
@@ -15,50 +38,6 @@ function initCarousel() {
     const prev = carousel.querySelector('#prev');
 
     let index;
-
-    next.addEventListener('click', () => {
-        index++;
-
-        if(index > allMedias.length - 1) {
-            index = 0;
-        }
-        
-        mediaFocus = displayMediaCarousel(allMedias[index]);
-    });
-
-    window.addEventListener('keydown', (event) => {
-        if(event.code === 'ArrowRight' && modal.style.display === 'block') {
-            index++;
-
-            if(index > allMedias.length - 1) {
-                index = 0;
-            }
-            
-            mediaFocus = displayMediaCarousel(allMedias[index]);
-        }
-    })
-
-    prev.addEventListener('click', () => {
-        index--;
-
-        if(index < 0) {
-            index = allMedias.length - 1;
-        }
-
-        mediaFocus = displayMediaCarousel(allMedias[index]);       
-    })
-
-    window.addEventListener('keydown', (event) => {
-        if(event.code === 'ArrowLeft' && modal.style.display === 'block') {
-            index--;
-
-            if(index < 0) {
-                index = allMedias.length - 1;
-            }
-            
-            mediaFocus = displayMediaCarousel(allMedias[index]);
-        }
-    })
 
     for(let media of allMedias) {
         media.addEventListener('click', () => {
@@ -68,6 +47,36 @@ function initCarousel() {
             modalCarousel.displayModal();  
         })
     }
+
+    // Carousel image suivante
+    next.addEventListener('click', () => {
+        index = incrementIndex(index, allMedias);
+        
+        mediaFocus = displayMediaCarousel(allMedias[index]);
+    });
+
+    window.addEventListener('keydown', (event) => {
+        if(event.code === 'ArrowRight' && modal.style.display === 'block') {
+            index = incrementIndex(index, allMedias);
+            
+            mediaFocus = displayMediaCarousel(allMedias[index]);
+        }
+    })
+
+    // Carousel image précédente
+    prev.addEventListener('click', () => {
+        index = decrementIndex(index, allMedias);
+
+        mediaFocus = displayMediaCarousel(allMedias[index]);       
+    })
+
+    window.addEventListener('keydown', (event) => {
+        if(event.code === 'ArrowLeft' && modal.style.display === 'block') {
+            index = decrementIndex(index, allMedias);
+            
+            mediaFocus = displayMediaCarousel(allMedias[index]);
+        }
+    })
 }
 
 buttonClose.addEventListener('click', () => {
@@ -89,4 +98,4 @@ window.addEventListener('keydown', (event) => {
 
 carousel.addEventListener('click', (event) => {
     event.stopPropagation();
-});
+});*/

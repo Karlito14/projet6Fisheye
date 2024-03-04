@@ -1,7 +1,6 @@
 import { Api } from "../api/api.js";
 import { Photographer } from "../templates/photographer.js";
 
-
 async function getPhotographers() {
     const apiData = new Api('./data/photographers.json');
     const result = await apiData.getData();
