@@ -3,7 +3,6 @@ const buttonContact = document.querySelector('.contact_button');
 const elModalForm = document.querySelector('#contact_modal');
 const mainForm = document.querySelector('#main');
 const bodyForm = document.querySelector('body');
-const closeDialog = elModalForm.querySelector('[data-dismiss]');
 const modalDocument = elModalForm.querySelector('.modal');
 const form = modalDocument.querySelector('.form-modal');
 const inputFirst = form.querySelector('#first');
@@ -13,20 +12,10 @@ const textArea = form.querySelector('#message');
 
 const inputs = [inputFirst, inputLast, inputEmail, textArea];
 
-const modalForm = new Modal(elModalForm, mainForm, bodyForm);
+const modalForm = new Modal(elModalForm, modalDocument, mainForm, bodyForm, buttonContact);
 
 buttonContact.addEventListener('click', () => {
     modalForm.displayModal();
-});
-closeDialog.addEventListener('click', closeModalForm);
-elModalForm.addEventListener('click', closeModalForm);
-window.addEventListener('keydown', (event) => {
-    if(event.code === 'Escape' && elModalForm.style.display === 'block') {
-        closeModalForm();
-    }
-})
-modalDocument.addEventListener('click', (event) => {
-    event.stopPropagation();
 });
 
 form.addEventListener('submit', (event) => {
@@ -78,8 +67,3 @@ form.addEventListener('submit', (event) => {
         },200)
     }
 });
-
-function closeModalForm() {
-    modalForm.closeModal()
-    buttonContact.focus();
-}

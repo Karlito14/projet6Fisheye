@@ -8,11 +8,12 @@ const focusableElementsArray = [
 ];
 
 class Modal {
-    constructor(modal, modalContainer, main, body) {
+    constructor(modal, modalContainer, main, body, elementFocus) {
         this.main = main;
         this.modal = modal;
         this.modalContainer = modalContainer;
         this.body = body;
+        this.elementFocus = elementFocus
         this.firstElementFocusable = this.findFirstElementFocusable(this.modal, focusableElementsArray);
         this.lastElementFocusable = this.findLastFirstElementFocusable(this.modal, focusableElementsArray);
         this.buttonClose = this.modal.querySelector('[data-dismiss]');
@@ -63,6 +64,7 @@ class Modal {
         this.modal.setAttribute('aria-hidden', true);
         this.main.removeAttribute('aria-hidden');
         this.body.removeAttribute('style');
+        this.elementFocus.focus()
     }
 
     eventListenersGeneral() {
@@ -91,13 +93,7 @@ class Carousel extends Modal {
         this.buttonPrev = this.modal.querySelector('#prev');
         this.allMedias = Array.from(this.main.querySelectorAll('.image-media'));
         this.index = 0;
-        this.elementFocus = undefined;
         this.eventListeners();
-        this.initCarousel();
-    }
-
-    initCarousel() {
-        
     }
 
     displayMediaCarousel(media) {
