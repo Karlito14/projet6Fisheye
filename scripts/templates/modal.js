@@ -64,7 +64,7 @@ class Modal {
         this.modal.setAttribute('aria-hidden', true);
         this.main.removeAttribute('aria-hidden');
         this.body.removeAttribute('style');
-        this.elementFocus.focus()
+        this.elementFocus.focus();
     }
 
     eventListenersGeneral() {
@@ -87,8 +87,8 @@ class Modal {
 }
 
 class Carousel extends Modal {
-    constructor(modal, main, body, buttonClose) {
-        super(modal, main, body, buttonClose);
+    constructor(modal, main, body, buttonClose, elementFocus) {
+        super(modal, main, body, buttonClose, elementFocus);
         this.buttonNext = this.modal.querySelector('#next');
         this.buttonPrev = this.modal.querySelector('#prev');
         this.allMedias = Array.from(this.main.querySelectorAll('.image-media'));
@@ -171,4 +171,3 @@ class Carousel extends Modal {
         }
     }
 }
-

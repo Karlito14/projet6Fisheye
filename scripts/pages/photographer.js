@@ -1,6 +1,7 @@
 import { Api } from "../api/api.js";
 import { Photographer } from "../templates/photographer.js";
-import { Media, sortByValue, getTotalLikesAndPrice, updateValueLikes } from "../templates/medias.js";
+import { Media } from "../templates/medias.js";
+import { sortByValue, getTotalLikesAndPrice, updateValueLikes } from '../utils/medias.js';
 
 async function getMediasAndPhotographeById(id) {
     const apiData = new Api('./data/photographers.json');
@@ -66,16 +67,17 @@ async function init() {
 
     // Trier les oeuvres selon l'option selected
     const select = document.querySelector('.select-options');
-    let medias = sortByValue(mediasFiltered, select.value);
+    let mediasSort = sortByValue(mediasFiltered, select.value);
 
     select.addEventListener('input', (event) => {
-        medias = sortByValue(mediasFiltered, event.target.value);
-        displayMedias(medias);
+        mediasSort = sortByValue(mediasFiltered, event.target.value);
+        displayMedias(mediasSort);
+        initCarouselModal();
     })
 
     displayPhotographer(photographer);
-    displayMedias(medias);
-    displayTotalLikesAndPrice(medias, photographer.price);
+    displayMedias(mediasSort);
+    displayTotalLikesAndPrice(mediasSort, photographer.price);
 
     initCarouselModal();
 }
