@@ -19,6 +19,9 @@ export class Media {
         const article = document.createElement('article');
         article.setAttribute('class', 'article-media');
 
+        const buttonOpenMedia = document.createElement('button');
+        buttonOpenMedia.setAttribute('class', 'button-media');
+
         let elMedia;
 
         if(this.image) {
@@ -36,10 +39,11 @@ export class Media {
 
         elMedia.setAttribute('src', this.mediaPath);
         elMedia.setAttribute('class', 'image-media');
-        elMedia.setAttribute('tabindex', '0');
         elMedia.setAttribute('aria-haspopup', 'dialog');
         elMedia.setAttribute('aria-controls', 'carousel_modal');
         elMedia.setAttribute('data-name', `${this.title}`);
+
+        buttonOpenMedia.appendChild(elMedia);
 
         const divInfo = document.createElement('div');
         divInfo.setAttribute('class', 'div-info-media');
@@ -52,7 +56,7 @@ export class Media {
 
         divInfo.innerHTML = textInfo;
 
-        article.appendChild(elMedia);
+        article.appendChild(buttonOpenMedia);
         article.appendChild(divInfo);
         elementLi.appendChild(article);
 

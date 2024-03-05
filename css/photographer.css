@@ -153,6 +153,19 @@ header {
     position: relative;
 }
 
+.button-media {
+    border: none;
+    width: 100%;
+}
+
+.button-media:focus {
+    outline: none;
+}
+
+.button-media:focus > img, .button-media:focus > video {
+    border: 2px solid black;
+}
+
 .image-media {
     width: 100%;
     height: 300px;

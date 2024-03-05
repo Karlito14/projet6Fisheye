@@ -91,14 +91,16 @@ class Carousel extends Modal {
         super(modal, main, body, buttonClose, elementFocus);
         this.buttonNext = this.modal.querySelector('#next');
         this.buttonPrev = this.modal.querySelector('#prev');
-        this.allMedias = Array.from(this.main.querySelectorAll('.image-media'));
+        this.allButtonsMedias = Array.from(this.main.querySelectorAll('.button-media'));
         this.index = 0;
         this.eventListeners();
     }
 
-    displayMediaCarousel(media) {
+    displayMediaCarousel(button) {
         const elLiCarousel = this.modal.querySelector('#li-list-carousel');
         const titleCarousel = this.modal.querySelector('#carrousel-title');
+
+        const media = button.firstChild;
 
         elLiCarousel.firstElementChild.remove();
         const [source, title] = [media.src, media.dataset.name];
@@ -125,24 +127,24 @@ class Carousel extends Modal {
         titleCarousel.textContent = title;
         
         elLiCarousel.prepend(elMediaCarousel);
-        return media;
+        return button;
     }
 
     incrementIndex() {
         this.index++;
-        if(this.index > this.allMedias.length - 1) {
+        if(this.index > this.allButtonsMedias.length - 1) {
             this.index = 0;
         }  
-        this.elementFocus = this.displayMediaCarousel(this.allMedias[this.index]);
+        this.elementFocus = this.displayMediaCarousel(this.allButtonsMedias[this.index]);
     }
 
     decrementIndex() {
         this.index--;
     
         if(this.index < 0) {
-            this.index = this.allMedias.length - 1;
+            this.index = this.allButtonsMedias.length - 1;
         }
-        this.elementFocus = this.displayMediaCarousel(this.allMedias[this.index]);
+        this.elementFocus = this.displayMediaCarousel(this.allButtonsMedias[this.index]);
     }
 
     eventListeners() {
@@ -161,11 +163,11 @@ class Carousel extends Modal {
         this.buttonNext.addEventListener('click', () => this.incrementIndex());
         this.buttonPrev.addEventListener('click', () => this.decrementIndex());
 
-        for(let media of this.allMedias) {
-            media.addEventListener('click', () => {
-                this.index = this.allMedias.indexOf(media);
+        for(let button of this.allButtonsMedias) {
+            button.addEventListener('click', () => {
+                this.index = this.allButtonsMedias.indexOf(button);
     
-                this.elementFocus = this.displayMediaCarousel(this.allMedias[this.index]);
+                this.elementFocus = this.displayMediaCarousel(this.allButtonsMedias[this.index]);
                 this.displayModal();  
             })
         }
