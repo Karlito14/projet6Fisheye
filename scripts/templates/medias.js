@@ -21,27 +21,10 @@ export class Media {
 
         const buttonOpenMedia = document.createElement('button');
         buttonOpenMedia.setAttribute('class', 'button-media');
-
-        let elMedia;
-
-        if(this.image) {
-            elMedia = document.createElement('img');
-            elMedia.setAttribute('alt', this.title);
-        } else {
-            elMedia = document.createElement('video');
-            elMedia.setAttribute('type', 'video/mp4');
-
-            const erreur = document.createElement('span');
-            erreur.textContent = 'Votre navigateur ne prend pas en charge les vidéos HTML5'
-
-            elMedia.appendChild(erreur);
-        }
-
-        elMedia.setAttribute('src', this.mediaPath);
-        elMedia.setAttribute('class', 'image-media');
-        elMedia.setAttribute('aria-haspopup', 'dialog');
-        elMedia.setAttribute('aria-controls', 'carousel_modal');
-        elMedia.setAttribute('data-name', `${this.title}`);
+        
+        let elMedia = new Factory(this.mediaPath, this.title, this.image ? 'image' : 'video');
+        
+        elMedia = elMedia.create();
 
         buttonOpenMedia.appendChild(elMedia);
 
@@ -61,5 +44,58 @@ export class Media {
         elementLi.appendChild(article);
 
         return elementLi;
+    }
+}
+
+class Factory {
+    constructor(path, title, type) {
+        switch(type) {
+            case 'image': 
+                return new Image(path, title);
+            case 'video':
+                return new Video(path, title);
+        }
+    }
+}
+
+class Image {
+    constructor(path, title) {
+        this.path = path;
+        this.title = title;
+    }
+
+    create() {
+        this.element = document.createElement('img');
+        this.element.setAttribute('alt', this.title);
+        this.element.setAttribute('src', this.path);
+        this.element.setAttribute('class', 'image-media');
+        this.element.setAttribute('aria-haspopup', 'dialog');
+        this.element.setAttribute('aria-controls', 'carousel_modal');
+        this.element.setAttribute('data-name', `${this.title}`);
+        return this.element;
+    }
+}
+
+class Video{
+    constructor(path, title) {
+        this.path = path;
+        this.title = title;
+    }
+
+    create() {
+        this.element = document.createElement('video');
+        this.element.setAttribute('alt', this.title);
+
+        this.error = document.createElement('span');
+        this.error.textContent = 'Votre navigateur ne prend pas en charge les vidéos HTML5';
+
+        this.element.appendChild(this.error);
+
+        this.element.setAttribute('src', this.path);
+        this.element.setAttribute('class', 'image-media');
+        this.element.setAttribute('aria-haspopup', 'dialog');
+        this.element.setAttribute('aria-controls', 'carousel_modal');
+        this.element.setAttribute('data-name', `${this.title}`);
+        return this.element;
     }
 }
