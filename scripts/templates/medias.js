@@ -45,6 +45,34 @@ export class Media {
 
         return elementLi;
     }
+
+    updateValueLikes() {
+        const iconsHeart = document.querySelectorAll('.icon-media');
+        for(let icon of iconsHeart) {
+            let clicked = false;
+            icon.addEventListener('click', () => {
+                const span = icon.closest('span');
+                const value = span.textContent;
+                const totalLikes = document.querySelector('.total-likes');
+                const valueTotalLikes = totalLikes.textContent;
+
+                let newValue;
+                
+                if(!clicked) {
+                    newValue = +value + 1;
+                    totalLikes.textContent = +valueTotalLikes + 1;
+                    clicked = true;
+                } else {
+                    newValue = +value - 1;
+                    totalLikes.textContent = +valueTotalLikes - 1;
+                    clicked = false;
+                }
+
+                span.textContent = newValue;
+                span.appendChild(icon);
+            })
+        }
+    }
 }
 
 class Factory {
