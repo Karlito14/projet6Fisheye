@@ -98,12 +98,13 @@ class Carousel extends Modal {
     }
 
     displayMediaCarousel(button) {
-        const elLiCarousel = this.modal.querySelector('#li-list-carousel');
+        const sectionCarousel = this.modal.querySelector('.section-carousel');
         const titleCarousel = this.modal.querySelector('#carrousel-title');
 
+        // Je récupère le média cliqué
         const media = button.firstChild;
 
-        elLiCarousel.firstElementChild.remove();
+        sectionCarousel.firstElementChild.remove();
         const [source, title] = [media.src, media.dataset.name];
 
         let elMediaCarousel;
@@ -112,22 +113,26 @@ class Carousel extends Modal {
             const videoCarousel = document.createElement('video');
             videoCarousel.setAttribute('controls', 'controls');
             videoCarousel.setAttribute('type', 'video/mp4');
+            videoCarousel.setAttribute('tabindex', '0');
+
             videoCarousel.textContent = 'Votre navigateur ne permet pas de lire les vidéos';
 
             elMediaCarousel = videoCarousel;
         } else {
             const imageCarousel = document.createElement('img');
             imageCarousel.setAttribute('alt', title);
+            imageCarousel.setAttribute('tabindex', '0');
 
             elMediaCarousel = imageCarousel;
         }
 
         elMediaCarousel.src = source;
+        elMediaCarousel.setAttribute('aria-roledescription', 'slide');
         elMediaCarousel.setAttribute('class', 'media-carousel');
 
         titleCarousel.textContent = title;
         
-        elLiCarousel.prepend(elMediaCarousel);
+        sectionCarousel.prepend(elMediaCarousel);
         return button;
     }
 

@@ -1,10 +1,10 @@
 export class Factory {
     constructor(path, title, type) {
         switch(type) {
-        case 'image': 
-            return new Image(path, title);
-        case 'video':
-            return new Video(path, title);
+            case 'image': 
+                return new Image(path, title);
+            case 'video':
+                return new Video(path, title);
         }
     }
 }
@@ -17,11 +17,9 @@ class Image {
 
     create() {
         this.element = document.createElement('img');
-        this.element.setAttribute('alt', this.title);
+        this.element.setAttribute('alt', '');
         this.element.setAttribute('src', this.path);
         this.element.setAttribute('class', 'image-media');
-        this.element.setAttribute('aria-haspopup', 'dialog');
-        this.element.setAttribute('aria-controls', 'carousel_modal');
         this.element.setAttribute('data-name', `${this.title}`);
         return this.element;
     }
@@ -35,7 +33,6 @@ class Video{
 
     create() {
         this.element = document.createElement('video');
-        this.element.setAttribute('alt', this.title);
 
         this.error = document.createElement('span');
         this.error.textContent = 'Votre navigateur ne prend pas en charge les vidéos HTML5';
@@ -44,8 +41,6 @@ class Video{
 
         this.element.setAttribute('src', this.path);
         this.element.setAttribute('class', 'image-media');
-        this.element.setAttribute('aria-haspopup', 'dialog');
-        this.element.setAttribute('aria-controls', 'carousel_modal');
         this.element.setAttribute('data-name', `${this.title}`);
         return this.element;
     }

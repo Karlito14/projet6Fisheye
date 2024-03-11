@@ -23,6 +23,10 @@ export class Media {
 
         const buttonOpenMedia = document.createElement('button');
         buttonOpenMedia.setAttribute('class', 'button-media');
+        buttonOpenMedia.setAttribute('aria-haspopup', 'dialog');
+        buttonOpenMedia.setAttribute('aria-controls', 'carousel_modal');
+        buttonOpenMedia.setAttribute('aria-label', 'Ouvrir carrousel');
+
 
         // Création d'une instance de la class Factory
         let elMedia = new Factory(this.mediaPath, this.title, this.image ? 'image' : 'video');
@@ -36,7 +40,7 @@ export class Media {
         
         const textInfo = 
         `<h2 class='text-media'>${this.title}</h2>
-         <span class='number-likes'>${this.likes}<i class='fa-solid fa-heart icon-media' aria-label='likes'></i>
+         <span class='number-likes aria-label='nombre de likes'>${this.likes}<i class='fa-solid fa-heart icon-media' aria-label='likes'></i>
          </span>
         `;
 
