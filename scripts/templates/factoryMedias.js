@@ -1,10 +1,10 @@
 export class Factory {
     constructor(path, title, type) {
         switch(type) {
-            case 'image': 
-                return new Image(path, title);
-            case 'video':
-                return new Video(path, title);
+        case 'image': 
+            return new Image(path, title);
+        case 'video':
+            return new Video(path, title);
         }
     }
 }

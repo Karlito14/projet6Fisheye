@@ -13,7 +13,7 @@ class Modal {
         this.modal = modal;
         this.modalContainer = modalContainer;
         this.body = body;
-        this.elementFocus = elementFocus
+        this.elementFocus = elementFocus;
         this.firstElementFocusable = this.findFirstElementFocusable(this.modal, focusableElementsArray);
         this.lastElementFocusable = this.findLastFirstElementFocusable(this.modal, focusableElementsArray);
         this.buttonClose = this.modal.querySelector('[data-dismiss]');
@@ -21,7 +21,7 @@ class Modal {
     }
 
     focusInFirstElementFocusable() {
-        this.firstElementFocusable.focus()
+        this.firstElementFocusable.focus();
     }
 
     findFirstElementFocusable(modal, focusableElementsArray) {
@@ -51,7 +51,7 @@ class Modal {
     }
 
     displayModal() {
-        this.modal.style.display = "block";
+        this.modal.style.display = 'block';
         this.modal.removeAttribute('aria-hidden');
         this.main.setAttribute('aria-hidden', true);
         this.focusInFirstElementFocusable();
@@ -60,7 +60,7 @@ class Modal {
     }
 
     closeModal() {
-        this.modal.style.display = "none";
+        this.modal.style.display = 'none';
         this.modal.setAttribute('aria-hidden', true);
         this.main.removeAttribute('aria-hidden');
         this.body.removeAttribute('style');
@@ -69,7 +69,7 @@ class Modal {
 
     eventListenersGeneral() {
         window.addEventListener('keydown', (event) => {
-            if(this.modal.style.display === "block") {
+            if(this.modal.style.display === 'block') {
                 if(event.code === 'Tab') {
                     this.closeFocusInTheModal(event);
                 }
@@ -78,7 +78,7 @@ class Modal {
                     this.closeModal();
                 }
             }  
-        })
+        });
 
         this.buttonClose.addEventListener('click', () => this.closeModal());
         this.modalContainer.addEventListener('click', (event) => event.stopPropagation());
@@ -86,6 +86,7 @@ class Modal {
     }
 }
 
+// eslint-disable-next-line no-unused-vars
 class Carousel extends Modal {
     constructor(modal, main, body, buttonClose, elementFocus) {
         super(modal, main, body, buttonClose, elementFocus);
@@ -158,7 +159,7 @@ class Carousel extends Modal {
                     this.incrementIndex();
                 }
             }
-        })
+        });
 
         this.buttonNext.addEventListener('click', () => this.incrementIndex());
         this.buttonPrev.addEventListener('click', () => this.decrementIndex());
@@ -169,7 +170,7 @@ class Carousel extends Modal {
     
                 this.elementFocus = this.displayMediaCarousel(this.allButtonsMedias[this.index]);
                 this.displayModal();  
-            })
+            });
         }
     }
 }

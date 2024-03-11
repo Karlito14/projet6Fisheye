@@ -1,4 +1,4 @@
-import { API_KEY_PASTEBIN } from "../../config/config.js";
+import { API_KEY_PASTEBIN } from '../../config/config.js';
 
 export class CheckForm {
 
@@ -11,7 +11,7 @@ export class CheckForm {
             input.classList.remove('invalid');
         }
 
-        let errorInput = document.querySelector(`#error-input-${input.id}`)
+        let errorInput = document.querySelector(`#error-input-${input.id}`);
 
         if(!errorInput) {
             errorInput = document.createElement('span');
@@ -24,7 +24,7 @@ export class CheckForm {
     }
 
     static checkInputTextValidity(input) {
-        const regexName = new RegExp("^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$");
+        const regexName = new RegExp('^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.\'-]+$');
 
         const valueInput = input.value;
 
@@ -38,10 +38,10 @@ export class CheckForm {
     }
 
     static checkInputEmailValidity(input) {
-        const regexEmail = new RegExp("[a-zA0-9_.\-]+@[a-zA-Z0-9]+\.[a-z0-9.]+")
+        const regexEmail = new RegExp('[a-zA0-9_.-]+@[a-zA-Z0-9]+.[a-z0-9.]+');
 
         if(!regexEmail.test(input.value)) {
-            throw new Error(`Veuillez renseigner une adresse mail valide`);
+            throw new Error('Veuillez renseigner une adresse mail valide');
         }
     }
 
@@ -69,7 +69,7 @@ export class CheckForm {
             api_paste_code: JSON.stringify(object),
             api_paste_name:  'formulaire',
             api_paste_format: 'javascript',
-        }
+        };
 
         const requestOptions = {
             method: 'POST',

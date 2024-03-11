@@ -1,4 +1,4 @@
-import { CheckForm } from "./check-form.js";
+import { CheckForm } from './check-form.js';
 const buttonContact = document.querySelector('.contact_button');
 const elModalForm = document.querySelector('#contact_modal');
 const mainForm = document.querySelector('#main');
@@ -12,6 +12,7 @@ const textArea = form.querySelector('#message');
 
 const inputs = [inputFirst, inputLast, inputEmail, textArea];
 
+// eslint-disable-next-line no-undef
 const modalForm = new Modal(elModalForm, modalDocument, mainForm, bodyForm, buttonContact);
 
 buttonContact.addEventListener('click', () => {
@@ -64,6 +65,6 @@ form.addEventListener('submit', (event) => {
         }
         setTimeout(() => {
             modalForm.closeModal();
-        },200)
+        },200);
     }
 });

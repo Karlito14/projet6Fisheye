@@ -16,11 +16,11 @@ function sortByValue(medias, value) {
     if(value === 'popularity') {
         medias.sort((a, b) => {
             return b.likes - a.likes;
-        })
+        });
     } else if(value === 'title') {
         medias.sort((a, b) => {
             return a.title.localeCompare(b.title);
-        })
+        });
     } else if(value === 'date') {
         medias.sort((a, b) => {
             let valueA = +a.date.split('-')[0];
@@ -36,9 +36,9 @@ function sortByValue(medias, value) {
                 }
             }
             return valueB - valueA;
-        })
+        });
     }
     return medias;
 }
 
-export {sortByValue, getTotalLikesAndPrice}
+export {sortByValue, getTotalLikesAndPrice};

@@ -26,12 +26,12 @@ export class Photographer {
 
         const link = document.createElement('a');
         link.setAttribute('href', `photographer.html?id=${this.id}`);
-        link.setAttribute('target', `_self`);
+        link.setAttribute('target', '_self');
 
         const img = document.createElement( 'img' );
         img.setAttribute('class', 'article-img');
-        img.setAttribute("src", this.picture);
-        img.setAttribute('alt', "");
+        img.setAttribute('src', this.picture);
+        img.setAttribute('alt', '');
 
         link.appendChild(img);
 
@@ -88,10 +88,10 @@ export class Photographer {
 
         const img = document.createElement( 'img' );
         img.setAttribute('class', 'div-img-image');
-        img.setAttribute("src", this.picture);
+        img.setAttribute('src', this.picture);
         img.setAttribute('alt', this.name);
 
-        divImg.appendChild(img)
+        divImg.appendChild(img);
 
         return [divInfo, divImg];
     }

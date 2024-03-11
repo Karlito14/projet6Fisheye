@@ -1,4 +1,4 @@
-import { Factory } from "./factoryMedias.js";
+import { Factory } from './factoryMedias.js';
 
 export class Media {
     constructor(media) {
@@ -73,7 +73,7 @@ export class Media {
 
                 span.textContent = newValue;
                 span.appendChild(icon);
-            })
+            });
         }
     }
 }

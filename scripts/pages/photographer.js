@@ -1,11 +1,12 @@
-import { Api } from "../api/api.js";
-import { Photographer } from "../templates/photographer.js";
-import { Media } from "../templates/medias.js";
+/* eslint-disable no-undef */
+import { Api } from '../api/api.js';
+import { Photographer } from '../templates/photographer.js';
+import { Media } from '../templates/medias.js';
 import { sortByValue, getTotalLikesAndPrice } from '../utils/medias.js';
 
 async function getMediasAndPhotographeById(id) {
     const apiData = new Api('./data/photographers.json');
-    const result = await apiData.getData()
+    const result = await apiData.getData();
     const medias = result.media;
 
     const mediasFiltered = medias.filter((media) => media.photographerId === id);
@@ -26,7 +27,7 @@ function displayPhotographer(photographer) {
     const [divInfo, image] = photographerModel.getUserCardPhotographerPage();
 
     photographerHeader.prepend(divInfo);
-    photographerHeader.append(image)
+    photographerHeader.append(image);
 }
 
 function displayMedias(medias) {
@@ -56,7 +57,7 @@ function displayTotalLikesAndPrice(medias, price) {
 async function init() {
     // Récupère le ID du photographe dans l'URL
     const params = new URL(document.location).searchParams;
-    let id = params.get("id");
+    let id = params.get('id');
 
     // Récupère les oeuvres du photographe et son identité
     const [mediasFiltered, photographer] = await getMediasAndPhotographeById(+id);
@@ -69,7 +70,7 @@ async function init() {
         mediasSort = sortByValue(mediasFiltered, event.target.value);
         displayMedias(mediasSort);
         initCarouselModal();
-    })
+    });
 
     displayPhotographer(photographer);
     displayMedias(mediasSort);
