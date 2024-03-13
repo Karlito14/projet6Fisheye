@@ -4,7 +4,7 @@ const main = document.querySelector('#main');
 const body = document.querySelector('body');
 const carousel = modal.querySelector('.modal-carousel');
 
-function initCarouselModal() {
+function initCarouselModal () {
     // eslint-disable-next-line no-undef
     const modalCarousel = new Carousel(modal, carousel, main, body);
-}
+};

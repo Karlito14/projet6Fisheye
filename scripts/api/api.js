@@ -1,9 +1,9 @@
 export class Api {
-    constructor(url) {
+    constructor (url) {
         this.url = url;
     }
 
-    async getData() {
+    async getData () {
         try {
             const response = await fetch(this.url);
             const data = await response.json();
@@ -11,6 +11,6 @@ export class Api {
             return data;
         } catch (error) {
             console.error(error.message);
-        } 
+        }
     }
 }

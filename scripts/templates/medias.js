@@ -1,7 +1,7 @@
 import { Factory } from './factoryMedias.js';
 
 export class Media {
-    constructor(media) {
+    constructor (media) {
         this.title = media.title;
         this.likes = media.likes;
         this.image = media.image;
@@ -10,11 +10,11 @@ export class Media {
         this.mediaPath = this.getPathMedia();
     }
 
-    getPathMedia(){
+    getPathMedia () {
         return `assets/medias/${this.image || this.video}`;
     }
 
-    getMediaCard() {
+    getMediaCard () {
         const elementLi = document.createElement('li');
         elementLi.setAttribute('class', 'media-item');
 
@@ -27,19 +27,16 @@ export class Media {
         buttonOpenMedia.setAttribute('aria-controls', 'carousel_modal');
         buttonOpenMedia.setAttribute('aria-label', 'Ouvrir carrousel');
 
-
         // Création d'une instance de la class Factory
         let elMedia = new Factory(this.mediaPath, this.title, this.image ? 'image' : 'video');
-        
         elMedia = elMedia.create();
 
         buttonOpenMedia.appendChild(elMedia);
 
         const divInfo = document.createElement('div');
         divInfo.setAttribute('class', 'div-info-media');
-        
-        const textInfo = 
-        `<h2 class='text-media'>${this.title}</h2>
+
+        const textInfo = `<h2 class='text-media'>${this.title}</h2>
          <span class='number-likes aria-label='nombre de likes'>${this.likes}<i class='fa-solid fa-heart icon-media' aria-label='likes'></i>
          </span>
         `;
@@ -53,9 +50,9 @@ export class Media {
         return elementLi;
     }
 
-    updateValueLikes() {
+    updateValueLikes () {
         const iconsHeart = document.querySelectorAll('.icon-media');
-        for(let icon of iconsHeart) {
+        for (const icon of iconsHeart) {
             let clicked = false;
             icon.addEventListener('click', () => {
                 const span = icon.closest('span');
@@ -64,8 +61,8 @@ export class Media {
                 const valueTotalLikes = totalLikes.textContent;
 
                 let newValue;
-                
-                if(!clicked) {
+
+                if (!clicked) {
                     newValue = +value + 1;
                     totalLikes.textContent = +valueTotalLikes + 1;
                     clicked = true;

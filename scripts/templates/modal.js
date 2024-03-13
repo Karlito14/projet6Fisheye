@@ -4,11 +4,11 @@ const focusableElementsArray = [
     'input:not([disabled])',
     'select:not([disabled])',
     'textarea:not([disabled])',
-    '[tabindex]:not([tabindex="-1"])',
+    '[tabindex]:not([tabindex="-1"])'
 ];
 
 class Modal {
-    constructor(modal, modalContainer, main, body, elementFocus) {
+    constructor (modal, modalContainer, main, body, elementFocus) {
         this.main = main;
         this.modal = modal;
         this.modalContainer = modalContainer;
@@ -20,46 +20,45 @@ class Modal {
         this.eventListenersGeneral();
     }
 
-    focusInFirstElementFocusable() {
+    focusInFirstElementFocusable () {
         this.firstElementFocusable.focus();
     }
 
-    findFirstElementFocusable(modal, focusableElementsArray) {
+    findFirstElementFocusable (modal, focusableElementsArray) {
         const focusableElements = modal.querySelectorAll(focusableElementsArray);
 
         return focusableElements[0];
     }
 
-    findLastFirstElementFocusable(modal, focusableElementsArray) {
+    findLastFirstElementFocusable (modal, focusableElementsArray) {
         const focusableElements = modal.querySelectorAll(focusableElementsArray);
 
         return focusableElements[focusableElements.length - 1];
     }
 
-    closeFocusInTheModal(event) {
+    closeFocusInTheModal (event) {
         const elementFocus = this.modal.querySelector(':focus');
 
-        if(elementFocus === this.lastElementFocusable && !event.shiftKey) {
+        if (elementFocus === this.lastElementFocusable && !event.shiftKey) {
             event.preventDefault();
             this.firstElementFocusable.focus();
         }
 
-        if(elementFocus === this.firstElementFocusable && event.shiftKey) {
+        if (elementFocus === this.firstElementFocusable && event.shiftKey) {
             event.preventDefault();
             this.lastElementFocusable.focus();
         }
     }
 
-    displayModal() {
+    displayModal () {
         this.modal.style.display = 'block';
         this.modal.removeAttribute('aria-hidden');
         this.main.setAttribute('aria-hidden', true);
         this.focusInFirstElementFocusable();
         this.body.style.overflow = 'hidden';
-
     }
 
-    closeModal() {
+    closeModal () {
         this.modal.style.display = 'none';
         this.modal.setAttribute('aria-hidden', true);
         this.main.removeAttribute('aria-hidden');
@@ -67,28 +66,28 @@ class Modal {
         this.elementFocus.focus();
     }
 
-    eventListenersGeneral() {
+    eventListenersGeneral () {
         window.addEventListener('keydown', (event) => {
-            if(this.modal.style.display === 'block') {
-                if(event.code === 'Tab') {
+            if (this.modal.style.display === 'block') {
+                if (event.code === 'Tab') {
                     this.closeFocusInTheModal(event);
                 }
 
-                if(event.code === 'Escape') {
+                if (event.code === 'Escape') {
                     this.closeModal();
                 }
-            }  
+            }
         });
 
         this.buttonClose.addEventListener('click', () => this.closeModal());
         this.modalContainer.addEventListener('click', (event) => event.stopPropagation());
         this.modal.addEventListener('click', () => this.closeModal());
     }
-}
+};
 
 // eslint-disable-next-line no-unused-vars
 class Carousel extends Modal {
-    constructor(modal, main, body, buttonClose, elementFocus) {
+    constructor (modal, main, body, buttonClose, elementFocus) {
         super(modal, main, body, buttonClose, elementFocus);
         this.buttonNext = this.modal.querySelector('#next');
         this.buttonPrev = this.modal.querySelector('#prev');
@@ -97,7 +96,7 @@ class Carousel extends Modal {
         this.eventListeners();
     }
 
-    displayMediaCarousel(button) {
+    displayMediaCarousel (button) {
         const sectionCarousel = this.modal.querySelector('.section-carousel');
         const titleCarousel = this.modal.querySelector('#carrousel-title');
 
@@ -108,8 +107,8 @@ class Carousel extends Modal {
         const [source, title] = [media.src, media.dataset.name];
 
         let elMediaCarousel;
-        
-        if(media.localName === 'video') {
+
+        if (media.localName === 'video') {
             const videoCarousel = document.createElement('video');
             videoCarousel.setAttribute('controls', 'controls');
             videoCarousel.setAttribute('type', 'video/mp4');
@@ -131,36 +130,36 @@ class Carousel extends Modal {
         elMediaCarousel.setAttribute('class', 'media-carousel');
 
         titleCarousel.textContent = title;
-        
+
         sectionCarousel.prepend(elMediaCarousel);
         return button;
     }
 
-    incrementIndex() {
+    incrementIndex () {
         this.index++;
-        if(this.index > this.allButtonsMedias.length - 1) {
+        if (this.index > this.allButtonsMedias.length - 1) {
             this.index = 0;
-        }  
+        }
         this.elementFocus = this.displayMediaCarousel(this.allButtonsMedias[this.index]);
     }
 
-    decrementIndex() {
+    decrementIndex () {
         this.index--;
-    
-        if(this.index < 0) {
+
+        if (this.index < 0) {
             this.index = this.allButtonsMedias.length - 1;
         }
         this.elementFocus = this.displayMediaCarousel(this.allButtonsMedias[this.index]);
     }
 
-    eventListeners() {
+    eventListeners () {
         window.addEventListener('keydown', (event) => {
-            if(this.modal.style.display === 'block') {
-                if(event.code === 'ArrowLeft') {
+            if (this.modal.style.display === 'block') {
+                if (event.code === 'ArrowLeft') {
                     this.decrementIndex();
                 }
 
-                if(event.code === 'ArrowRight') {
+                if (event.code === 'ArrowRight') {
                     this.incrementIndex();
                 }
             }
@@ -169,13 +168,13 @@ class Carousel extends Modal {
         this.buttonNext.addEventListener('click', () => this.incrementIndex());
         this.buttonPrev.addEventListener('click', () => this.decrementIndex());
 
-        for(let button of this.allButtonsMedias) {
+        for (const button of this.allButtonsMedias) {
             button.addEventListener('click', () => {
                 this.index = this.allButtonsMedias.indexOf(button);
-    
+
                 this.elementFocus = this.displayMediaCarousel(this.allButtonsMedias[this.index]);
-                this.displayModal();  
+                this.displayModal();
             });
         }
     }
-}
+};

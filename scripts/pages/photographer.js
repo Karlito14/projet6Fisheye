@@ -4,7 +4,7 @@ import { Photographer } from '../templates/photographer.js';
 import { Media } from '../templates/medias.js';
 import { sortByValue, getTotalLikesAndPrice } from '../utils/medias.js';
 
-async function getMediasAndPhotographeById(id) {
+async function getMediasAndPhotographeById (id) {
     const apiData = new Api('./data/photographers.json');
     const result = await apiData.getData();
     const medias = result.media;
@@ -16,7 +16,7 @@ async function getMediasAndPhotographeById(id) {
     return [mediasFiltered, ...photographer];
 }
 
-function displayPhotographer(photographer) {
+function displayPhotographer (photographer) {
     const photographerHeader = document.querySelector('.photograph-header');
     // ajout du nom du photographe dans le formulaire
     const nameForm = document.querySelector('.name-form');
@@ -30,7 +30,7 @@ function displayPhotographer(photographer) {
     photographerHeader.append(image);
 }
 
-function displayMedias(medias) {
+function displayMedias (medias) {
     const elMediasList = document.querySelector('.medias-list');
     elMediasList.innerHTML = '';
 
@@ -43,10 +43,10 @@ function displayMedias(medias) {
     });
 
     // Appel de la méthode qui met à jour le nombre de likes sur les medias
-    mediaModel.updateValueLikes();  
+    mediaModel.updateValueLikes();
 }
 
-function displayTotalLikesAndPrice(medias, price) {
+function displayTotalLikesAndPrice (medias, price) {
     const sectionMedias = document.querySelector('.list-medias');
 
     const likesAndPrice = getTotalLikesAndPrice(medias, price);
@@ -54,10 +54,10 @@ function displayTotalLikesAndPrice(medias, price) {
     sectionMedias.appendChild(likesAndPrice);
 }
 
-async function init() {
+async function init () {
     // Récupère le ID du photographe dans l'URL
     const params = new URL(document.location).searchParams;
-    let id = params.get('id');
+    const id = params.get('id');
 
     // Récupère les oeuvres du photographe et son identité
     const [mediasFiltered, photographer] = await getMediasAndPhotographeById(+id);

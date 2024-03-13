@@ -1,5 +1,5 @@
 export class Photographer {
-    constructor(data) {
+    constructor (data) {
         this.name = data.name;
         this.portrait = data.portrait;
         this.city = data.city;
@@ -11,15 +11,15 @@ export class Photographer {
     }
 
     // récupération du chemin pour la photo
-    getImagePath() {
+    getImagePath () {
         return `assets/photographers/${this.portrait}`;
     }
 
     // Affichage du photographe Page d'accueil
-    getUserCardHomePage() {
+    getUserCardHomePage () {
         const listeItem = document.createElement('li');
 
-        const article = document.createElement( 'article' );
+        const article = document.createElement('article');
         article.setAttribute('class', 'article');
 
         listeItem.appendChild(article);
@@ -28,16 +28,16 @@ export class Photographer {
         link.setAttribute('href', `photographer.html?id=${this.id}`);
         link.setAttribute('target', '_self');
 
-        const img = document.createElement( 'img' );
+        const img = document.createElement('img');
         img.setAttribute('class', 'article-img');
         img.setAttribute('src', this.picture);
         img.setAttribute('alt', '');
 
         link.appendChild(img);
 
-        const h2 = document.createElement( 'h2' );
+        const h2 = document.createElement('h2');
         h2.setAttribute('class', 'article-title');
-        h2.textContent =this.name;
+        h2.textContent = this.name;
 
         link.appendChild(h2);
 
@@ -63,10 +63,10 @@ export class Photographer {
     }
 
     // Affichage du photographe Page photographe
-    getUserCardPhotographerPage() {
+    getUserCardPhotographerPage () {
         const divInfo = document.createElement('div');
         divInfo.setAttribute('class', 'div-info');
-    
+
         const title = document.createElement('h1');
         title.setAttribute('class', 'div-info-title');
         title.textContent = this.name;
@@ -86,7 +86,7 @@ export class Photographer {
         const divImg = document.createElement('div');
         divImg.setAttribute('class', 'div-img');
 
-        const img = document.createElement( 'img' );
+        const img = document.createElement('img');
         img.setAttribute('class', 'div-img-image');
         img.setAttribute('src', this.picture);
         img.setAttribute('alt', this.name);

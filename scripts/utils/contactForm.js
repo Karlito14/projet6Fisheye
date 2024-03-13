@@ -56,15 +56,15 @@ form.addEventListener('submit', (event) => {
         formOk = false;
     }
 
-    if(formOk) {
+    if (formOk) {
         const formData = new FormData(form);
         CheckForm.sendDataToPastebin(formData);
-        for(let input of inputs) {
+        for (const input of inputs) {
             console.log(input.value);
             input.value = '';
         }
         setTimeout(() => {
             modalForm.closeModal();
-        },200);
+        }, 200);
     }
 });

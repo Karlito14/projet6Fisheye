@@ -1,7 +1,7 @@
 export class Factory {
-    constructor(path, title, type) {
-        switch(type) {
-            case 'image': 
+    constructor (path, title, type) {
+        switch (type) {
+            case 'image':
                 return new Image(path, title);
             case 'video':
                 return new Video(path, title);
@@ -10,12 +10,12 @@ export class Factory {
 }
 
 class Image {
-    constructor(path, title) {
+    constructor (path, title) {
         this.path = path;
         this.title = title;
     }
 
-    create() {
+    create () {
         this.element = document.createElement('img');
         this.element.setAttribute('alt', '');
         this.element.setAttribute('src', this.path);
@@ -23,15 +23,15 @@ class Image {
         this.element.setAttribute('data-name', `${this.title}`);
         return this.element;
     }
-}
+};
 
-class Video{
-    constructor(path, title) {
+class Video {
+    constructor (path, title) {
         this.path = path;
         this.title = title;
     }
 
-    create() {
+    create () {
         this.element = document.createElement('video');
 
         this.error = document.createElement('span');
@@ -44,4 +44,4 @@ class Video{
         this.element.setAttribute('data-name', `${this.title}`);
         return this.element;
     }
-}
+};
