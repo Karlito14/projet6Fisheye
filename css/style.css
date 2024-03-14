@@ -114,3 +114,37 @@ header {
 .article-price {
     color: #757575;
 }
+
+/******************** Responsive ********************/
+
+@media screen and (max-width: 994px) {
+    .list-photographers {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        height: 110px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
+    .title-home-page {
+        margin-right: 0;
+    }
+    
+    .list-photographers {
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .list-photographers {
+        grid-template-columns: 1fr;
+    }
+}

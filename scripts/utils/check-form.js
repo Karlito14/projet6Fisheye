@@ -75,7 +75,7 @@ export class CheckForm {
             body: new URLSearchParams(data)
         };
 
-        // fetch request
+        // Requete fetch pour envoyer le formulaire
         try {
             const reponse = await fetch(url, requestOptions);
             const resultat = await reponse.text();
