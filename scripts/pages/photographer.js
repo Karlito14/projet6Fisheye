@@ -6,6 +6,7 @@ import { sortByValue, getTotalLikesAndPrice } from '../utils/medias.js';
 import { initCarouselModal } from '../templates/carousel.js';
 
 async function getMediasAndPhotographeById (id) {
+    // Fonction pour récupérer le photographe, et ses oeuvres, qui correspond à l'ID
     const apiData = new Api('./data/photographers.json');
     const result = await apiData.getData();
     const medias = result.media;
@@ -23,6 +24,7 @@ function displayPhotographer (photographer) {
     const nameForm = document.querySelector('.name-form');
     nameForm.textContent = photographer.name;
 
+    // Nouvel instance de Photographer
     const photographerModel = new Photographer(photographer);
 
     const [divInfo, image] = photographerModel.getUserCardPhotographerPage();
@@ -38,6 +40,7 @@ function displayMedias (medias) {
     let mediaModel;
 
     medias.forEach(media => {
+        // Instance de Media pour afficher les oeuvres sur la page du photographe
         mediaModel = new Media(media);
         const mediaCard = mediaModel.getMediaCard();
         elMediasList.appendChild(mediaCard);
@@ -50,6 +53,7 @@ function displayMedias (medias) {
 function displayTotalLikesAndPrice (medias, price) {
     const sectionMedias = document.querySelector('.list-medias');
 
+    // Fonction dans utlis/medias.js
     const likesAndPrice = getTotalLikesAndPrice(medias, price);
 
     sectionMedias.appendChild(likesAndPrice);
@@ -63,8 +67,8 @@ async function init () {
     // Récupère les oeuvres du photographe et son identité
     const [mediasFiltered, photographer] = await getMediasAndPhotographeById(+id);
 
-    // Trier les oeuvres selon l'option selected
     const select = document.querySelector('.select-options');
+    // fonction pour trier les oeuvres (fonction dans utils/medias.js)
     let mediasSort = sortByValue(mediasFiltered, select.value);
 
     select.addEventListener('input', (event) => {
