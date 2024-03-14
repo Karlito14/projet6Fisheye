@@ -215,3 +215,78 @@ header {
     margin-right: 40px;
     margin-left: 5px;
 }
+
+
+/******************** Responsive ********************/
+@media screen and (max-width: 994px) {
+    .photograph-header {
+        flex-direction: column;
+        margin: 0 50px;
+        position: relative;
+    }
+
+    .div-info {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .div-img {
+        position: absolute;
+        top: 20px;
+        right: 50px;
+    }
+
+    .medias-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .likes-price {
+        right: 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .photograph-header {
+        margin: 0 20px;
+        padding: 20px 30px;
+    }
+
+    .logo {
+        margin-left: 30px;
+    }
+
+    .div-img {
+        display: none;
+    }
+
+    .div-info {
+        text-align: center;
+    }
+
+    .div-contact_button {
+        width: 100%;
+    }
+
+    .contact_button {
+        width: 90%;
+        padding: 20px 0;
+        height: none;
+    }
+
+    .medias-list {
+        grid-template-columns: 1fr;
+    }
+
+    .div-select {
+        margin: 20px 30px;
+    }
+
+    .medias-section {
+        margin: 20px 30px;
+    }
+
+    .likes-price {
+        width: 90%;
+        right: 0;
+    }
+}

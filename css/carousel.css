@@ -63,3 +63,21 @@
     color: var(--color-primary);
     font-size: 1.5em;
 }
+
+/******************** Responsive ********************/
+@media screen and (max-width: 767px) {
+    #carousel_modal {
+        padding: 0px;
+    }
+
+    .modal-carousel {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .section-carousel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

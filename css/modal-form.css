@@ -141,3 +141,27 @@ form input {
 .send_form:hover {
     transform: scale(1.1);
 }
+
+/******************** Responsive ********************/
+@media screen and (max-width: 767px) {
+    .modal {
+        width: 100%;
+    }
+    
+    .modal header h2, .name-form {
+        font-size: 2em;
+    }
+
+    .modal label, .modal input, .modal textarea {
+        font-size: 1.5em;
+    }
+
+    .modal img {
+        width: 25px;
+        height: 25px;
+    }
+
+    #contact_modal {
+        padding: 20px;
+    }
+}
