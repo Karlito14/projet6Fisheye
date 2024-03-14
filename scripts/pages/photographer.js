@@ -3,6 +3,7 @@ import { Api } from '../api/api.js';
 import { Photographer } from '../templates/photographer.js';
 import { Media } from '../templates/medias.js';
 import { sortByValue, getTotalLikesAndPrice } from '../utils/medias.js';
+import { initCarouselModal } from '../templates/carousel.js';
 
 async function getMediasAndPhotographeById (id) {
     const apiData = new Api('./data/photographers.json');

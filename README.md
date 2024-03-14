@@ -46,4 +46,10 @@ FishEye est un site web qui permet aux photographes indépendants de présenter 
 - Le code est séparé en différents fichiers (HTML, CSS, JavaScript)
 - Une version moderne (ES6 ou supérieure) de JavaScript est utilisée et les fonctionnalités obsolètes ne sont pas utilisées
 
+### Tester le projet
+
+Pour tester le projet :
+
+Cliquez [ici](https://karlito14.github.io/projet6Fisheye/) ou cloner le dépot github
+
 Réalisé par [Carlos Leiroz](https://www.linkedin.com/in/carlos-leiroz/)
