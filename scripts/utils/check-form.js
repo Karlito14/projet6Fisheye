@@ -45,10 +45,13 @@ export class CheckForm {
     }
 
     static checkTextAreaValidity (textArea) {
+        const regexTextarea = /[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ?!,.'-]+$/;
         const value = textArea.value;
 
         if (value.trim() === '') {
             throw new Error(`Le champ ${textArea.dataset.name} ne peut etre vide`);
+        } else if (!regexTextarea.test(value)) {
+            throw new Error(`Le ${textArea.dataset.name} ne peut contenir de caractères sépciales`);
         }
     }
 
