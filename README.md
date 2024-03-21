@@ -9,7 +9,7 @@ FishEye est un site web qui permet aux photographes indépendants de présenter 
 - Récupérer les données JSON avec fetch
 - Page d'accueil affiché dynamiquement selon la data
 - Page photographe dynamique selon le photographe choisi
-- Le site doit etre accessible aux utilisateurs malvoyants
+- L'accessibilité est la clé ! Le site doit etre accessible aux personnes malvoyantes
 
 ### Éléments fournis
 
@@ -35,16 +35,17 @@ FishEye est un site web qui permet aux photographes indépendants de présenter 
 - Les médias peuvent être triés par popularité ou par titre ou par date
 - Lorsque l'utilisateur clique sur un média, celui-ci doit s’ouvrir dans une lightbox. Il est possible de faire défiler les médias avec la souris et le clavier
 - Afficher un bouton pour contacter le photographe
-
-* Le formulaire de contact est une modale qui s'affiche par-dessus
-  le reste
-* Il comprend des champs pour les noms, l'adresse électronique et
+- Le formulaire de contact est une modale 
+- Il comprend des champs pour les noms, l'adresse électronique et
   le message
+- La validité du formulaire doit etre controlé avant l'envoi
 
 ### Instructions
 
 - Le code est séparé en différents fichiers (HTML, CSS, JavaScript)
 - Une version moderne (ES6 ou supérieure) de JavaScript est utilisée et les fonctionnalités obsolètes ne sont pas utilisées
+- Utilisé ESLint avec les paramètres par défaut
+- Tester le code sur un lecteur d'écran
 
 ### Tester le projet
 
